@@ -13,17 +13,25 @@ extension MMPDashbordVC {
         timeTitleLabel.text = "Time This Week"
         earnTitleLabel.text = "Earned"
         navigationController?.isNavigationBarHidden = true
+        profileButton.setTitle("", for: .normal)
         setUpTableView()
     }
     
     func setUpTableView() {
         projectListTableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectTableViewCell")
     }
+    
+    func showAlerViewController(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPAlertVC") as!MMPAlertVC
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true)
+    }
 }
 
 extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

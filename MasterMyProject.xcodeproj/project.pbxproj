@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180B55D328F73A820087898D /* MMPProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B55D228F73A820087898D /* MMPProfileVC.swift */; };
+		180B55D528F740E90087898D /* MMPAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B55D428F740E90087898D /* MMPAlertVC.swift */; };
 		180BAC2628EB2D340076F4B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC2528EB2D340076F4B4 /* AppDelegate.swift */; };
 		180BAC2828EB2D340076F4B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC2728EB2D340076F4B4 /* SceneDelegate.swift */; };
 		180BAC2D28EB2D340076F4B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BAC2B28EB2D340076F4B4 /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		180B55D228F73A820087898D /* MMPProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPProfileVC.swift; sourceTree = "<group>"; };
+		180B55D428F740E90087898D /* MMPAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPAlertVC.swift; sourceTree = "<group>"; };
 		180BAC2228EB2D340076F4B4 /* MasterMyProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasterMyProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180BAC2528EB2D340076F4B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180BAC2728EB2D340076F4B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				18D6A23528F5A6D900A51A17 /* MMPDashbordVC+UI.swift */,
 				18DC12F228F6F9310067A29F /* MMPProjectDetailsVC.swift */,
 				18DC12F428F6F9440067A29F /* MMPProjectDetailsVC+UI.swift */,
+				180B55D228F73A820087898D /* MMPProfileVC.swift */,
+				180B55D428F740E90087898D /* MMPAlertVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -495,6 +501,8 @@
 				18DC12F328F6F9310067A29F /* MMPProjectDetailsVC.swift in Sources */,
 				18D6A23C28F5AA0F00A51A17 /* ProjectTableViewCell.swift in Sources */,
 				180BAC2628EB2D340076F4B4 /* AppDelegate.swift in Sources */,
+				180B55D528F740E90087898D /* MMPAlertVC.swift in Sources */,
+				180B55D328F73A820087898D /* MMPProfileVC.swift in Sources */,
 				1868D09628ED95F6002751E2 /* MMPDashbordVC.swift in Sources */,
 				180BAC2828EB2D340076F4B4 /* SceneDelegate.swift in Sources */,
 				18DC12EF28F6F4EA0067A29F /* MMPView.swift in Sources */,

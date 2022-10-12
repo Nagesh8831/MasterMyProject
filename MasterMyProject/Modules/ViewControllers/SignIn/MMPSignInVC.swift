@@ -29,6 +29,9 @@ class MMPSignInVC: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func forgotPasswordButtonAction(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 

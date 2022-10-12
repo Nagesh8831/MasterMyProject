@@ -14,16 +14,22 @@ class MMPDashbordVC: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var earnTitleLabel: UILabel!
     @IBOutlet weak var earnLabel: UILabel!
+    @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var projectListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        showAlerViewController()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         setupUI()
     }
     
-
+    @IBAction func profileButtonAction(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPProfileVC") as! MMPProfileVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
