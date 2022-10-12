@@ -9,13 +9,22 @@
 /* Begin PBXBuildFile section */
 		180BAC2628EB2D340076F4B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC2528EB2D340076F4B4 /* AppDelegate.swift */; };
 		180BAC2828EB2D340076F4B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC2728EB2D340076F4B4 /* SceneDelegate.swift */; };
-		180BAC2A28EB2D340076F4B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC2928EB2D340076F4B4 /* ViewController.swift */; };
 		180BAC2D28EB2D340076F4B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BAC2B28EB2D340076F4B4 /* Main.storyboard */; };
 		180BAC2F28EB2D360076F4B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180BAC2E28EB2D360076F4B4 /* Assets.xcassets */; };
 		180BAC3228EB2D360076F4B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180BAC3028EB2D360076F4B4 /* LaunchScreen.storyboard */; };
 		180BAC3D28EB2D360076F4B4 /* MasterMyProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC3C28EB2D360076F4B4 /* MasterMyProjectTests.swift */; };
 		180BAC4728EB2D360076F4B4 /* MasterMyProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC4628EB2D360076F4B4 /* MasterMyProjectUITests.swift */; };
 		180BAC4928EB2D360076F4B4 /* MasterMyProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC4828EB2D360076F4B4 /* MasterMyProjectUITestsLaunchTests.swift */; };
+		1868D09228ED948F002751E2 /* MMPSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868D09128ED948F002751E2 /* MMPSignInVC.swift */; };
+		1868D09428ED94E4002751E2 /* MMPSignInVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868D09328ED94E4002751E2 /* MMPSignInVC+UI.swift */; };
+		1868D09628ED95F6002751E2 /* MMPDashbordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868D09528ED95F6002751E2 /* MMPDashbordVC.swift */; };
+		18D6A23628F5A6D900A51A17 /* MMPDashbordVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6A23528F5A6D900A51A17 /* MMPDashbordVC+UI.swift */; };
+		18D6A23C28F5AA0F00A51A17 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6A23A28F5AA0F00A51A17 /* ProjectTableViewCell.swift */; };
+		18D6A23D28F5AA0F00A51A17 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D6A23B28F5AA0F00A51A17 /* ProjectTableViewCell.xib */; };
+		18DC12EF28F6F4EA0067A29F /* MMPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC12EE28F6F4EA0067A29F /* MMPView.swift */; };
+		18DC12F128F6F5000067A29F /* MMPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC12F028F6F5000067A29F /* MMPButton.swift */; };
+		18DC12F328F6F9310067A29F /* MMPProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC12F228F6F9310067A29F /* MMPProjectDetailsVC.swift */; };
+		18DC12F528F6F9440067A29F /* MMPProjectDetailsVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC12F428F6F9440067A29F /* MMPProjectDetailsVC+UI.swift */; };
 		80C5BA4CD337FA6B1BA8EA98 /* Pods_MasterMyProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894188ACB6560675ABB396A4 /* Pods_MasterMyProject.framework */; };
 		94585687465303A7CACEF1F9 /* Pods_MasterMyProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA4D0A41B1F4FFA2E0856DB /* Pods_MasterMyProjectTests.framework */; };
 		A6BA900463EBFC9873B5A88B /* Pods_MasterMyProject_MasterMyProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF60BFDDE060E1FB44DC7D4B /* Pods_MasterMyProject_MasterMyProjectUITests.framework */; };
@@ -42,7 +51,6 @@
 		180BAC2228EB2D340076F4B4 /* MasterMyProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasterMyProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180BAC2528EB2D340076F4B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		180BAC2728EB2D340076F4B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		180BAC2928EB2D340076F4B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		180BAC2C28EB2D340076F4B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		180BAC2E28EB2D360076F4B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		180BAC3128EB2D360076F4B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +60,16 @@
 		180BAC4228EB2D360076F4B4 /* MasterMyProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasterMyProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		180BAC4628EB2D360076F4B4 /* MasterMyProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMyProjectUITests.swift; sourceTree = "<group>"; };
 		180BAC4828EB2D360076F4B4 /* MasterMyProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMyProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1868D09128ED948F002751E2 /* MMPSignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPSignInVC.swift; sourceTree = "<group>"; };
+		1868D09328ED94E4002751E2 /* MMPSignInVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPSignInVC+UI.swift"; sourceTree = "<group>"; };
+		1868D09528ED95F6002751E2 /* MMPDashbordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPDashbordVC.swift; sourceTree = "<group>"; };
+		18D6A23528F5A6D900A51A17 /* MMPDashbordVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPDashbordVC+UI.swift"; sourceTree = "<group>"; };
+		18D6A23A28F5AA0F00A51A17 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		18D6A23B28F5AA0F00A51A17 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
+		18DC12EE28F6F4EA0067A29F /* MMPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPView.swift; sourceTree = "<group>"; };
+		18DC12F028F6F5000067A29F /* MMPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPButton.swift; sourceTree = "<group>"; };
+		18DC12F228F6F9310067A29F /* MMPProjectDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPProjectDetailsVC.swift; sourceTree = "<group>"; };
+		18DC12F428F6F9440067A29F /* MMPProjectDetailsVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPProjectDetailsVC+UI.swift"; sourceTree = "<group>"; };
 		24A1A666F80169629FA4771F /* Pods-MasterMyProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasterMyProjectTests.release.xcconfig"; path = "Target Support Files/Pods-MasterMyProjectTests/Pods-MasterMyProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		3A393784DA0539E0EA5354BA /* Pods-MasterMyProject-MasterMyProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasterMyProject-MasterMyProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-MasterMyProject-MasterMyProjectUITests/Pods-MasterMyProject-MasterMyProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		796CD09B4BD2AD7797A651FE /* Pods-MasterMyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasterMyProject.release.xcconfig"; path = "Target Support Files/Pods-MasterMyProject/Pods-MasterMyProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,7 +149,8 @@
 			children = (
 				180BAC2528EB2D340076F4B4 /* AppDelegate.swift */,
 				180BAC2728EB2D340076F4B4 /* SceneDelegate.swift */,
-				180BAC2928EB2D340076F4B4 /* ViewController.swift */,
+				18DC12EB28F6F49C0067A29F /* IntegrationLayer */,
+				18D6A23828F5A9DA00A51A17 /* Modules */,
 				180BAC2B28EB2D340076F4B4 /* Main.storyboard */,
 				180BAC2E28EB2D360076F4B4 /* Assets.xcassets */,
 				180BAC3028EB2D360076F4B4 /* LaunchScreen.storyboard */,
@@ -155,6 +174,70 @@
 				180BAC4828EB2D360076F4B4 /* MasterMyProjectUITestsLaunchTests.swift */,
 			);
 			path = MasterMyProjectUITests;
+			sourceTree = "<group>";
+		};
+		1868D09028ED9467002751E2 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				1868D09128ED948F002751E2 /* MMPSignInVC.swift */,
+				1868D09328ED94E4002751E2 /* MMPSignInVC+UI.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		18D6A23728F5A97400A51A17 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1868D09028ED9467002751E2 /* SignIn */,
+				1868D09528ED95F6002751E2 /* MMPDashbordVC.swift */,
+				18D6A23528F5A6D900A51A17 /* MMPDashbordVC+UI.swift */,
+				18DC12F228F6F9310067A29F /* MMPProjectDetailsVC.swift */,
+				18DC12F428F6F9440067A29F /* MMPProjectDetailsVC+UI.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		18D6A23828F5A9DA00A51A17 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				18D6A23728F5A97400A51A17 /* ViewControllers */,
+				18D6A23928F5A9EF00A51A17 /* Cells */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		18D6A23928F5A9EF00A51A17 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				18D6A23A28F5AA0F00A51A17 /* ProjectTableViewCell.swift */,
+				18D6A23B28F5AA0F00A51A17 /* ProjectTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		18DC12EB28F6F49C0067A29F /* IntegrationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				18DC12ED28F6F4BC0067A29F /* Helper */,
+				18DC12EC28F6F4B60067A29F /* Utilities */,
+			);
+			path = IntegrationLayer;
+			sourceTree = "<group>";
+		};
+		18DC12EC28F6F4B60067A29F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		18DC12ED28F6F4BC0067A29F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				18DC12EE28F6F4EA0067A29F /* MMPView.swift */,
+				18DC12F028F6F5000067A29F /* MMPButton.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		3069FE28F68DF0D23ED12792 /* Frameworks */ = {
@@ -279,6 +362,7 @@
 				180BAC3228EB2D360076F4B4 /* LaunchScreen.storyboard in Resources */,
 				180BAC2F28EB2D360076F4B4 /* Assets.xcassets in Resources */,
 				180BAC2D28EB2D340076F4B4 /* Main.storyboard in Resources */,
+				18D6A23D28F5AA0F00A51A17 /* ProjectTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,9 +490,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				180BAC2A28EB2D340076F4B4 /* ViewController.swift in Sources */,
+				18DC12F128F6F5000067A29F /* MMPButton.swift in Sources */,
+				1868D09228ED948F002751E2 /* MMPSignInVC.swift in Sources */,
+				18DC12F328F6F9310067A29F /* MMPProjectDetailsVC.swift in Sources */,
+				18D6A23C28F5AA0F00A51A17 /* ProjectTableViewCell.swift in Sources */,
 				180BAC2628EB2D340076F4B4 /* AppDelegate.swift in Sources */,
+				1868D09628ED95F6002751E2 /* MMPDashbordVC.swift in Sources */,
 				180BAC2828EB2D340076F4B4 /* SceneDelegate.swift in Sources */,
+				18DC12EF28F6F4EA0067A29F /* MMPView.swift in Sources */,
+				18D6A23628F5A6D900A51A17 /* MMPDashbordVC+UI.swift in Sources */,
+				18DC12F528F6F9440067A29F /* MMPProjectDetailsVC+UI.swift in Sources */,
+				1868D09428ED94E4002751E2 /* MMPSignInVC+UI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

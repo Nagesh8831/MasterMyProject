@@ -11,9 +11,18 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
+    var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        return true
+    }
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        if #available(iOS 13.0, *) {
+            // In iOS 13 setup is done in SceneDelegate
+        } else {
+            makeRootViewController()
+        }
         return true
     }
 
@@ -34,3 +43,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate {
+    
+    func makeRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let saveValue = UserDefaults.standard.bool(forKey: "isLogin")
+        if saveValue {
+            getDashboard()
+        } else {
+            let rightViewController = storyboard.instantiateViewController(withIdentifier: "MMPSignInVC") as! MMPSignInVC
+            let nvc: UINavigationController = UINavigationController(rootViewController: rightViewController)
+            nvc.navigationBar.tintColor = UIColor.black
+            self.window?.rootViewController = nvc
+            self.window?.makeKeyAndVisible()
+        }
+    }
+    
+    func getDashboard() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
+        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+        nvc.navigationBar.tintColor = UIColor.black
+        self.window?.rootViewController = nvc
+        self.window?.makeKeyAndVisible()
+    }
+}
