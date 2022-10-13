@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MMPProjectDetailsVC: UIViewController ,UIBarPositioningDelegate {
+class MMPProjectDetailsVC: MMPBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -20,22 +20,17 @@ extension MMPDashbordVC {
     func setUpTableView() {
         projectListTableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectTableViewCell")
     }
-    
-    func showAlerViewController(){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPAlertVC") as!MMPAlertVC
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overCurrentContext
-        self.present(vc, animated: true)
-    }
 }
 
 extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectTableViewCell", for: indexPath) as! ProjectTableViewCell
+        cell.actionButton.tag = indexPath.row
+        cell.actionButton.addTarget(self, action: #selector(signOutButtonAction), for: .touchUpInside)
         return cell
     }
     
@@ -48,5 +43,13 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
         return 80.0
     }
     
+    @objc func signOutButtonAction(_ sender : UIButton) {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
+//        vc.modalTransitionStyle = .crossDissolve
+//        vc.modalPresentationStyle = .overCurrentContext
+//        self.present(vc, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

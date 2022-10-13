@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MMPDashbordVC: UIViewController {
+class MMPDashbordVC: MMPBaseVC {
     @IBOutlet weak var projectTitleLabel: UILabel!
     @IBOutlet weak var projectLabel: UILabel!
     @IBOutlet weak var timeTitleLabel: UILabel!
@@ -18,7 +18,7 @@ class MMPDashbordVC: UIViewController {
     @IBOutlet weak var projectListTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        showAlerViewController()
+        self.showAlerViewController("Are you operating Machine?", imageName: "machine")
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

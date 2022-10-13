@@ -13,13 +13,9 @@ extension MMPProjectDetailsVC {
     }
     
     func navigationBarSetUp() {
-      //  navigationController?.isNavigationBarHidden = false
-     //   navigationController?.navigationItem.title = "Project X"
-      //  navigationController?.navigationBar.tintColor = .red
+        //  navigationController?.isNavigationBarHidden = false
+        //   navigationController?.navigationItem.title = "Project X"
+        //  navigationController?.navigationBar.tintColor = .red
         
     }
-    
-       func position(for bar: UIBarPositioning) -> UIBarPosition {
-           return .topAttached
-       }
 }
