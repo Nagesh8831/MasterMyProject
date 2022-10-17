@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MMPAlertVC: UIViewController {
+class MMPAlertVC: MMPBaseVC {
     @IBOutlet weak var alertTitleLabel: UILabel!
     @IBOutlet weak var alertImage: UIImageView!
     var titleString : String?
@@ -19,11 +19,21 @@ class MMPAlertVC: UIViewController {
     }
     
     @IBAction func yesButtonAction(_ sender: UIButton) {
-        self.dismiss(animated: true)
+       // self.dismiss(animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartOneVC") as! MMPPrestartOneVC
+        // vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func noButtonAction(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        self.dismiss(animated: true, completion: {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            self.getTopMostViewController()?.present(vc, animated: true)
+        })
+        
+        //self.present(vc, animated: true)
     }
     /*
     // MARK: - Navigation

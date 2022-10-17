@@ -21,11 +21,15 @@ class MMPBaseVC: UIViewController,UIBarPositioningDelegate {
     
     func showAlerViewController(_ message: String, imageName: String) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPAlertVC") as!MMPAlertVC
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overCurrentContext
+        let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+        navController.modalTransitionStyle = .crossDissolve
+        navController.modalPresentationStyle = .overCurrentContext
         vc.titleString = message
         vc.imageString = imageName
-        self.present(vc, animated: true)
+        self.present(navController, animated: true)
+        
+        
+        
     }
     
     func getTopMostViewController() -> UIViewController? {
