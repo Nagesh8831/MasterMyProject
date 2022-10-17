@@ -2,12 +2,13 @@
 //  MMPSignOutAlertVC.swift
 //  MasterMyProject
 //
-//  Created by KO158S8 on 13/10/22.
+//  Created by Nagesh on 13/10/22.
 //
 
 import UIKit
 
-class MMPSignOutAlertVC: UIViewController {
+
+class MMPSignOutAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,12 +17,15 @@ class MMPSignOutAlertVC: UIViewController {
     }
     
     @IBAction func okButtonAction(_ sender: UIButton) {
-        dismiss(animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
+            vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
-        }
-        
+    }
+    
+    func removeTopChildViewController() {
+        //DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 ) {
+            self.dismiss(animated: false)
+        //}
     }
     /*
     // MARK: - Navigation

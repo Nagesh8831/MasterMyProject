@@ -1,18 +1,14 @@
 //
-//  MMPDocketVC.swift
+//  MMPDocketTwoVC.swift
 //  MasterMyProject
 //
-//  Created by Nagesh on 13/10/22.
+//  Created by Nagesh on 17/10/22.
 //
 
 import UIKit
-protocol MMPAlertRemoveHelper: AnyObject {
-    func removeTopChildViewController()
-}
 
-class MMPDocketVC: MMPBaseVC {
-
-    weak var delegate: MMPAlertRemoveHelper?
+class MMPDocketTwoVC: MMPBaseVC {
+    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
@@ -20,14 +16,9 @@ class MMPDocketVC: MMPBaseVC {
     }
     
     @IBAction func backButtonAction(_ sender: UIBarButtonItem) {
-        delegate?.removeTopChildViewController()
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func nextButtonAction(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketTwoVC") as! MMPDocketTwoVC
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
     /*
     // MARK: - Navigation
 

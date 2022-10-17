@@ -44,12 +44,21 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     @objc func signOutButtonAction(_ sender : UIButton) {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
+        let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+        navController.modalTransitionStyle = .crossDissolve
+        navController.modalPresentationStyle = .overCurrentContext
+        self.present(navController, animated: true, completion: nil)
+        
+        
+        
+//       // let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
 //        vc.modalTransitionStyle = .crossDissolve
 //        vc.modalPresentationStyle = .overCurrentContext
 //        self.present(vc, animated: true)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

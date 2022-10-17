@@ -21,6 +21,7 @@
 		180BAC4928EB2D360076F4B4 /* MasterMyProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC4828EB2D360076F4B4 /* MasterMyProjectUITestsLaunchTests.swift */; };
 		18377D2628F88A5C00D293EE /* MMPSignOutAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18377D2528F88A5C00D293EE /* MMPSignOutAlertVC.swift */; };
 		18377D2828F88AC100D293EE /* MMPDocketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18377D2728F88AC100D293EE /* MMPDocketVC.swift */; };
+		184B7F8128FD97E100430CFA /* MMPDocketTwoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B7F8028FD97E100430CFA /* MMPDocketTwoVC.swift */; };
 		1868D09228ED948F002751E2 /* MMPSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868D09128ED948F002751E2 /* MMPSignInVC.swift */; };
 		1868D09428ED94E4002751E2 /* MMPSignInVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868D09328ED94E4002751E2 /* MMPSignInVC+UI.swift */; };
 		1868D09628ED95F6002751E2 /* MMPDashbordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868D09528ED95F6002751E2 /* MMPDashbordVC.swift */; };
@@ -72,6 +73,7 @@
 		180BAC4828EB2D360076F4B4 /* MasterMyProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMyProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		18377D2528F88A5C00D293EE /* MMPSignOutAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPSignOutAlertVC.swift; sourceTree = "<group>"; };
 		18377D2728F88AC100D293EE /* MMPDocketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPDocketVC.swift; sourceTree = "<group>"; };
+		184B7F8028FD97E100430CFA /* MMPDocketTwoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPDocketTwoVC.swift; sourceTree = "<group>"; };
 		1868D09128ED948F002751E2 /* MMPSignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPSignInVC.swift; sourceTree = "<group>"; };
 		1868D09328ED94E4002751E2 /* MMPSignInVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPSignInVC+UI.swift"; sourceTree = "<group>"; };
 		1868D09528ED95F6002751E2 /* MMPDashbordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPDashbordVC.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				18DC12F428F6F9440067A29F /* MMPProjectDetailsVC+UI.swift */,
 				180B55D228F73A820087898D /* MMPProfileVC.swift */,
 				18377D2728F88AC100D293EE /* MMPDocketVC.swift */,
+				184B7F8028FD97E100430CFA /* MMPDocketTwoVC.swift */,
 				180B55D428F740E90087898D /* MMPAlertVC.swift */,
 				180B55D628F747A10087898D /* MMPAlertVC+UI.swift */,
 				18377D2528F88A5C00D293EE /* MMPSignOutAlertVC.swift */,
@@ -522,6 +525,7 @@
 				180BAC2828EB2D340076F4B4 /* SceneDelegate.swift in Sources */,
 				18DC12EF28F6F4EA0067A29F /* MMPView.swift in Sources */,
 				18D6A23628F5A6D900A51A17 /* MMPDashbordVC+UI.swift in Sources */,
+				184B7F8128FD97E100430CFA /* MMPDocketTwoVC.swift in Sources */,
 				18DC12F528F6F9440067A29F /* MMPProjectDetailsVC+UI.swift in Sources */,
 				1868D09428ED94E4002751E2 /* MMPSignInVC+UI.swift in Sources */,
 				180B55D928F748CE0087898D /* MMPBaseVC.swift in Sources */,

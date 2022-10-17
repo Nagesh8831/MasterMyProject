@@ -2,7 +2,7 @@
 //  MMPBaseVC.swift
 //  MasterMyProject
 //
-//  Created by KO158S8 on 13/10/22.
+//  Created by Nagesh on 13/10/22.
 //
 
 import UIKit
@@ -26,6 +26,14 @@ class MMPBaseVC: UIViewController,UIBarPositioningDelegate {
         vc.titleString = message
         vc.imageString = imageName
         self.present(vc, animated: true)
+    }
+    
+    func getTopMostViewController() -> UIViewController? {
+        var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
+        while let presentedViewController = topMostViewController?.presentedViewController {
+            topMostViewController = presentedViewController
+        }
+        return topMostViewController
     }
     /*
     // MARK: - Navigation

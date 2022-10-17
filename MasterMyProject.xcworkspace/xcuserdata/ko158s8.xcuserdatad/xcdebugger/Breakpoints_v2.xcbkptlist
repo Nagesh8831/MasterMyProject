@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6535F43A-38C6-4DF0-AD7B-9B1CE8600483"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MasterMyProject/Modules/ViewControllers/MMPDashbordVC+UI.swift"
@@ -24,7 +24,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B6E95415-A762-4F02-92A1-CBA73298E8E4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MasterMyProject/Modules/ViewControllers/MMPDashbordVC.swift"
@@ -39,16 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5C8DD71C-4C08-4D07-8F7C-7EE00893D2B3"
+            uuid = "4AFDBEB2-52DE-4487-ABF1-1341DD7272CD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MasterMyProject/Modules/ViewControllers/MMPSignOutAlertVC.swift"
+            filePath = "MasterMyProject/Modules/ViewControllers/MMPDashbordVC+UI.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "okButtonAction(_:)"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "signOutButtonAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
