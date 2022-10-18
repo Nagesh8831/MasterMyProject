@@ -17,7 +17,10 @@ class MMPTruckAlertVC: UIViewController {
     }
     
     @IBAction func yesButtonAction(_ sender: UIButton) {
-        self.dismiss(animated: true)
+       // self.dismiss(animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
+        // vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func noButtonAction(_ sender: UIButton) {

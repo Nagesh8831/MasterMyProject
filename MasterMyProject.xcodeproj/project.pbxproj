@@ -19,6 +19,9 @@
 		180BAC3D28EB2D360076F4B4 /* MasterMyProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC3C28EB2D360076F4B4 /* MasterMyProjectTests.swift */; };
 		180BAC4728EB2D360076F4B4 /* MasterMyProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC4628EB2D360076F4B4 /* MasterMyProjectUITests.swift */; };
 		180BAC4928EB2D360076F4B4 /* MasterMyProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180BAC4828EB2D360076F4B4 /* MasterMyProjectUITestsLaunchTests.swift */; };
+		18363AB828FEFB6700BEF58B /* MMPTruckPrestartOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18363AB728FEFB6700BEF58B /* MMPTruckPrestartOneVC.swift */; };
+		18363ABA28FEFB7400BEF58B /* MMPTruckPrestartTwoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18363AB928FEFB7400BEF58B /* MMPTruckPrestartTwoVC.swift */; };
+		18363ABC28FEFB8300BEF58B /* MMPTruckPrestartThreeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18363ABB28FEFB8300BEF58B /* MMPTruckPrestartThreeVC.swift */; };
 		18377D2628F88A5C00D293EE /* MMPSignOutAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18377D2528F88A5C00D293EE /* MMPSignOutAlertVC.swift */; };
 		18377D2828F88AC100D293EE /* MMPDocketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18377D2728F88AC100D293EE /* MMPDocketVC.swift */; };
 		184B7F8128FD97E100430CFA /* MMPDocketTwoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B7F8028FD97E100430CFA /* MMPDocketTwoVC.swift */; };
@@ -75,6 +78,9 @@
 		180BAC4228EB2D360076F4B4 /* MasterMyProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasterMyProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		180BAC4628EB2D360076F4B4 /* MasterMyProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMyProjectUITests.swift; sourceTree = "<group>"; };
 		180BAC4828EB2D360076F4B4 /* MasterMyProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMyProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		18363AB728FEFB6700BEF58B /* MMPTruckPrestartOneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPTruckPrestartOneVC.swift; sourceTree = "<group>"; };
+		18363AB928FEFB7400BEF58B /* MMPTruckPrestartTwoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPTruckPrestartTwoVC.swift; sourceTree = "<group>"; };
+		18363ABB28FEFB8300BEF58B /* MMPTruckPrestartThreeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPTruckPrestartThreeVC.swift; sourceTree = "<group>"; };
 		18377D2528F88A5C00D293EE /* MMPSignOutAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPSignOutAlertVC.swift; sourceTree = "<group>"; };
 		18377D2728F88AC100D293EE /* MMPDocketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPDocketVC.swift; sourceTree = "<group>"; };
 		184B7F8028FD97E100430CFA /* MMPDocketTwoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPDocketTwoVC.swift; sourceTree = "<group>"; };
@@ -213,6 +219,9 @@
 				18BFAC0D28FDD8BE00A98475 /* MMPPrestartOneVC.swift */,
 				18BFAC0F28FDDD0900A98475 /* MMPPrestartTwoVC.swift */,
 				18BFAC1128FDDD1400A98475 /* MMPPrestartThreeVC.swift */,
+				18363AB728FEFB6700BEF58B /* MMPTruckPrestartOneVC.swift */,
+				18363AB928FEFB7400BEF58B /* MMPTruckPrestartTwoVC.swift */,
+				18363ABB28FEFB8300BEF58B /* MMPTruckPrestartThreeVC.swift */,
 			);
 			path = Prestart;
 			sourceTree = "<group>";
@@ -540,16 +549,19 @@
 				18DC12F328F6F9310067A29F /* MMPProjectDetailsVC.swift in Sources */,
 				18D6A23C28F5AA0F00A51A17 /* ProjectTableViewCell.swift in Sources */,
 				18BFAC1028FDDD0900A98475 /* MMPPrestartTwoVC.swift in Sources */,
+				18363ABA28FEFB7400BEF58B /* MMPTruckPrestartTwoVC.swift in Sources */,
 				18BFAC0E28FDD8BE00A98475 /* MMPPrestartOneVC.swift in Sources */,
 				180BAC2628EB2D340076F4B4 /* AppDelegate.swift in Sources */,
 				18377D2628F88A5C00D293EE /* MMPSignOutAlertVC.swift in Sources */,
 				180B55D528F740E90087898D /* MMPAlertVC.swift in Sources */,
 				180B55D328F73A820087898D /* MMPProfileVC.swift in Sources */,
 				1868D09628ED95F6002751E2 /* MMPDashbordVC.swift in Sources */,
+				18363ABC28FEFB8300BEF58B /* MMPTruckPrestartThreeVC.swift in Sources */,
 				180BAC2828EB2D340076F4B4 /* SceneDelegate.swift in Sources */,
 				18DC12EF28F6F4EA0067A29F /* MMPView.swift in Sources */,
 				18D6A23628F5A6D900A51A17 /* MMPDashbordVC+UI.swift in Sources */,
 				184B7F8128FD97E100430CFA /* MMPDocketTwoVC.swift in Sources */,
+				18363AB828FEFB6700BEF58B /* MMPTruckPrestartOneVC.swift in Sources */,
 				18DC12F528F6F9440067A29F /* MMPProjectDetailsVC+UI.swift in Sources */,
 				1868D09428ED94E4002751E2 /* MMPSignInVC+UI.swift in Sources */,
 				180B55D928F748CE0087898D /* MMPBaseVC.swift in Sources */,
