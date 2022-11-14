@@ -27,6 +27,36 @@ class MMPSignInVC: UIViewController {
     }
     
     @IBAction func forgotPasswordButtonAction(_ sender: Any) {
+        let alertController = UIAlertController(title: "Forgot Password?", message: "Please enter your registered email", preferredStyle: .alert)
+        
+        
+        let saveAction = UIAlertAction(title: "Submit", style: .default, handler: {
+            alert -> Void in
+            
+            let firstTextField = alertController.textFields![0] as UITextField
+            
+            print("firstName \(firstTextField.text!)")
+//            if !self.isValidEmail(emaild: firstTextField.text!){
+//                self.alert("Email", subTitle: "Please Enter valid Email")
+//            } else{
+//            self.forgotPassword(firstTextField.text ?? "")
+//            }
+            self.forgotPassword(firstTextField.text ?? "")
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
+            (action : UIAlertAction!) -> Void in
+            
+        })
+        
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Your email"
+        }
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     /*
@@ -50,9 +80,10 @@ extension MMPSignInVC {
       //  startLoading()
         print(parameters)
         //let url = "http://52.63.247.85/mastermyproject/restapi"
-        let urlResponce = "http://52.63.247.85/mastermyproject/restapi/users/login"
-        print(urlResponce)
-        AF.request( urlResponce,method: .post ,parameters: parameters,encoding:
+        let urlRequest = "http://52.63.247.85/mastermyproject/restapi/users/login"
+        //let urlRequest = String (format: "%@%@%@", MMPConstant.baseURL,MMPConstant.USER_LOGIN)
+        print(urlRequest)
+        AF.request( urlRequest,method: .post ,parameters: parameters,encoding:
             JSONEncoding.default, headers: nil)
             .responseJSON { response in
                 switch response.result {
@@ -80,12 +111,12 @@ extension MMPSignInVC {
                             UserDefaults.standard.set(token, forKey: "userToken")
                             UserDefaults.standard.set(id, forKey: "userId")
                             UserDefaults.standard.synchronize()
-                            if statusCode == 200 {
+                           /* if statusCode == 200 {
                                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
                                 UserDefaults.standard.set(true, forKey: "isLogin")
                                 UserDefaults.standard.synchronize()
                                 self.navigationController?.pushViewController(vc, animated: true)
-                            }
+                            }*/
                             
                             print(token)
                             print(id)
@@ -100,6 +131,41 @@ extension MMPSignInVC {
                 
         }
     }
+    
+    func forgotPassword(_ email : String){
+        // guard validateData() else { return }
+         let parameters = ["email": "nagesh.rangapure8891@gmail.com"]//email]
+       //  startLoading()
+         print(parameters)
+         //let url = "http://52.63.247.85/mastermyproject/restapi"
+         let urlRequest = "http://52.63.247.85/mastermyproject/restapi/users/forgotpass"
+         //let urlRequest = String (format: "%@%@%@", MMPConstant.baseURL,MMPConstant.FORGOT_PASSWORD)
+         print(urlRequest)
+        let token = UserDefaults.standard.string(forKey: "userToken")
+       // value(forKey: "userToken") as! String
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
+                                    "Content-Type": "application/json"]
+         AF.request( urlRequest,method: .post ,parameters: parameters,encoding:
+             JSONEncoding.default, headers: headers)
+             .responseJSON { response in
+                 switch response.result {
+                 case .success(let value):
+                    // self.stopLoading()
+                     print("forgotPassword_response",response)
+                     if let loginJSON = value as? [String: Any] {
+                         if let statusCode = loginJSON["statusCode"] as? Int {
+                             print(statusCode)
+                         }
+                     }
+                 case .failure(let error):
+                     print(error)
+                     DispatchQueue.main.async {
+                         //self.present(alert, animated: true, completion: nil)
+                     }
+                 }
+                 
+         }
+     }
 }
 
 

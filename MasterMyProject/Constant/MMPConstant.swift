@@ -12,6 +12,7 @@ class MMPConstant: NSObject {
     static let baseURL = "http://52.63.247.85/mastermyproject/restapi/" //Live
     static let USER_REGISTER = "customer/getRegisterOTP"
     static let USER_LOGIN = "users/login"
+    static let FORGOT_PASSWORD = "users/forgotpass"
     static let GET_PROJECT_BY_USERID = "projects/getproject/"
     static let GET_ALL_PROJECT = "projects/getallprojects"
     
