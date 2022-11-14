@@ -8,11 +8,16 @@
 import UIKit
 
 class MMPPrestartTwoVC: MMPBaseVC {
-
+    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "Prestart(2/3)"
+        addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+       scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height+300)
     }
     
     @IBAction func backButtonAction(_ sender: UIBarButtonItem) {

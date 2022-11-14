@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Alamofire
 class MMPSignInVC: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,10 +23,7 @@ class MMPSignInVC: UIViewController {
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
-        UserDefaults.standard.set(true, forKey: "isLogin")
-        UserDefaults.standard.synchronize()
-        self.navigationController?.pushViewController(vc, animated: true)
+        userLogin("nagesh.rangapure8891@gmail.com")
     }
     
     @IBAction func forgotPasswordButtonAction(_ sender: Any) {
@@ -43,6 +40,70 @@ class MMPSignInVC: UIViewController {
     */
 
 }
+
+extension MMPSignInVC {
+    func userLogin(_ emailId:String){
+       // guard validateData() else { return }
+        let parameters = ["email": emailId,
+                          "password": "admin"
+        ]
+      //  startLoading()
+        print(parameters)
+        //let url = "http://52.63.247.85/mastermyproject/restapi"
+        let urlResponce = "http://52.63.247.85/mastermyproject/restapi/users/login"
+        print(urlResponce)
+        AF.request( urlResponce,method: .post ,parameters: parameters,encoding:
+            JSONEncoding.default, headers: nil)
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                   // self.stopLoading()
+                    print("login_response",response)
+                    if let loginJSON = value as? [String: Any] {
+                        if let statusCode = loginJSON["statusCode"] as? Int {
+                            print(statusCode)
+                            //let message = loginJSON["statusMessage"] as? String
+//                            if statusCode == 200{
+//                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "FFOtpViewController") as! FFOtpViewController
+//                                vc.isFromSignUp = false
+//                                vc.registerEmail = emailId
+//                                self.navigationController?.pushViewController(vc, animated: true)
+//                            }else if statusCode == 400{
+//                                self.alertUser("50Fifty", message: message!)
+//                            } else if statusCode == 404{
+//                                self.alertUser("50Fifty", message: "User Not Found")
+//                            } else if statusCode == 500{
+//                                self.alertUser("50Fifty", message: "User Not Found")
+//                            }
+                        }
+                        if let resultObject = loginJSON["resultObject"] as? [String: Any], let token = resultObject["token"] as? String, let id = resultObject["id"] as? String, let statusCode = loginJSON["statusCode"] as? Int {
+                            UserDefaults.standard.set(token, forKey: "userToken")
+                            UserDefaults.standard.set(id, forKey: "userId")
+                            UserDefaults.standard.synchronize()
+                            if statusCode == 200 {
+                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
+                                UserDefaults.standard.set(true, forKey: "isLogin")
+                                UserDefaults.standard.synchronize()
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                            
+                            print(token)
+                            print(id)
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                    DispatchQueue.main.async {
+                        //self.present(alert, animated: true, completion: nil)
+                    }
+                }
+                
+        }
+    }
+}
+
+
+
 @IBDesignable
 public class GradientButton: UIButton {
     public override class var layerClass: AnyClass         { CAGradientLayer.self }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MMPBaseVC: UIViewController,UIBarPositioningDelegate {
+class MMPBaseVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,8 +15,15 @@ class MMPBaseVC: UIViewController,UIBarPositioningDelegate {
         // Do any additional setup after loading the view.
     }
     
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
+//    func position(for bar: UIBarPositioning) -> UIBarPosition {
+//        return .topAttached
+//    }
+    
+    func addCustomizedBackBtn(navigationController: UINavigationController?, navigationItem: UINavigationItem?) {
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backArrow")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backArrow")
+        navigationItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
     }
     
     func showAlerViewController(_ message: String, imageName: String) {
@@ -27,9 +34,6 @@ class MMPBaseVC: UIViewController,UIBarPositioningDelegate {
         vc.titleString = message
         vc.imageString = imageName
         self.present(navController, animated: true)
-        
-        
-        
     }
     
     func getTopMostViewController() -> UIViewController? {

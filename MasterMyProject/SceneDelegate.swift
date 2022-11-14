@@ -54,6 +54,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate {
     
     func makeRoot() {
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = UIColor(red: 23.0/255.0, green: 51.0/255.0, blue: 98.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         let saveValue = UserDefaults.standard.bool(forKey: "isLogin")
         if saveValue {
             getDashboard()
@@ -61,16 +64,21 @@ extension SceneDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "MMPSignInVC") as! MMPSignInVC
             let rootNC = UINavigationController(rootViewController: vc)
+            rootNC.navigationBar.tintColor = UIColor.white
+            rootNC.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+            rootNC.navigationBar.barTintColor = UIColor(red: 23.0/255.0, green: 51.0/255.0, blue: 98.0/255.0, alpha: 1.0)
             self.window!.rootViewController = rootNC
             self.window!.makeKeyAndVisible()
         }
     }
     
-    
     func getDashboard() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabbarVC = storyboard.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
         let rootNC = UINavigationController(rootViewController: tabbarVC)
+        rootNC.navigationBar.tintColor = UIColor.white
+        rootNC.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        rootNC.navigationBar.barTintColor = UIColor(red: 23.0/255.0, green: 51.0/255.0, blue: 98.0/255.0, alpha: 1.0)
         self.window!.rootViewController = rootNC
         self.window!.makeKeyAndVisible()
     }

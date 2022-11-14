@@ -12,7 +12,7 @@ class MMPSignOutAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
     }
     

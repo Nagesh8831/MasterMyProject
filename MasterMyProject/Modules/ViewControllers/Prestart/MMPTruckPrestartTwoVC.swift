@@ -11,7 +11,8 @@ class MMPTruckPrestartTwoVC: MMPBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
+        title = "Prestart(2/3)"
+        addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         // Do any additional setup after loading the view.
     }
     

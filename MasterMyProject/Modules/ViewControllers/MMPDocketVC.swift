@@ -15,7 +15,9 @@ class MMPDocketVC: MMPBaseVC {
     weak var delegate: MMPAlertRemoveHelper?
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = false
+        title = "Doket"
+        addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         // Do any additional setup after loading the view.
     }
     

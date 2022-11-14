@@ -7,11 +7,13 @@
 
 import UIKit
 
-class MMPProfileVC: UIViewController {
+class MMPProfileVC: MMPBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.isNavigationBarHidden = false
+        title = "Profile"
+        addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         // Do any additional setup after loading the view.
     }
     

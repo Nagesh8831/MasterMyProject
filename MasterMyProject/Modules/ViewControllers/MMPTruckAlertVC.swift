@@ -12,7 +12,7 @@ class MMPTruckAlertVC: UIViewController {
     @IBOutlet weak var alertImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
     }
     

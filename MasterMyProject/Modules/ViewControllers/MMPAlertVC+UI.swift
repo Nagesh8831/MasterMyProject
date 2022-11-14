@@ -12,6 +12,7 @@ extension MMPAlertVC {
     func setUpUI(){
         alertTitleLabel.text = titleString
         alertImage.image = UIImage(named: imageString ?? "")
+        navigationController?.isNavigationBarHidden = true
     }
     
 }

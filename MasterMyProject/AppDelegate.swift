@@ -6,13 +6,19 @@
 //
 
 import UIKit
-
+import IQKeyboardManagerSwift
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+       // UINavigationBar.scrollEdgeAppearance = UINavigationBar.standardAppearance
+        
+        //UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black , NSAttributedString.Key.font : UIFont(name: "Barlow-Bold", size: 18)!]
         // Override point for customization after application launch.
         return true
     }
@@ -46,6 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     func makeRootViewController() {
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = UIColor(red: 23.0/255.0, green: 51.0/255.0, blue: 98.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let saveValue = UserDefaults.standard.bool(forKey: "isLogin")
         if saveValue {
@@ -53,7 +62,9 @@ extension AppDelegate {
         } else {
             let rightViewController = storyboard.instantiateViewController(withIdentifier: "MMPSignInVC") as! MMPSignInVC
             let nvc: UINavigationController = UINavigationController(rootViewController: rightViewController)
-            nvc.navigationBar.tintColor = UIColor.black
+            nvc.navigationBar.tintColor = UIColor.white
+            nvc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+            nvc.navigationBar.barTintColor = UIColor(red: 23.0/255.0, green: 51.0/255.0, blue: 98.0/255.0, alpha: 1.0)
             self.window?.rootViewController = nvc
             self.window?.makeKeyAndVisible()
         }
@@ -63,7 +74,10 @@ extension AppDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainViewController = storyboard.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
-        nvc.navigationBar.tintColor = UIColor.black
+        nvc.navigationBar.tintColor = UIColor.white
+       // nvc.navigationBar.barTintColor = UIColor.red
+        nvc.navigationBar.barTintColor = UIColor(red: 23.0/255.0, green: 51.0/255.0, blue: 98.0/255.0, alpha: 1.0)
+        nvc.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         self.window?.rootViewController = nvc
         self.window?.makeKeyAndVisible()
     }

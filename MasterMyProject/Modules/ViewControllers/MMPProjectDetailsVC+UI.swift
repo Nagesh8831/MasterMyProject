@@ -13,9 +13,9 @@ extension MMPProjectDetailsVC {
     }
     
     func navigationBarSetUp() {
-        //  navigationController?.isNavigationBarHidden = false
-        //   navigationController?.navigationItem.title = "Project X"
-        //  navigationController?.navigationBar.tintColor = .red
+        navigationController?.isNavigationBarHidden = false
+        title = "Project X"
+        addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         
     }
 }

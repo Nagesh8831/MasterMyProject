@@ -39,6 +39,7 @@
 		18DC12F128F6F5000067A29F /* MMPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC12F028F6F5000067A29F /* MMPButton.swift */; };
 		18DC12F328F6F9310067A29F /* MMPProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC12F228F6F9310067A29F /* MMPProjectDetailsVC.swift */; };
 		18DC12F528F6F9440067A29F /* MMPProjectDetailsVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DC12F428F6F9440067A29F /* MMPProjectDetailsVC+UI.swift */; };
+		18E9EDCA291124B900E4B0D2 /* MMPConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9EDC9291124B900E4B0D2 /* MMPConstant.swift */; };
 		80C5BA4CD337FA6B1BA8EA98 /* Pods_MasterMyProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894188ACB6560675ABB396A4 /* Pods_MasterMyProject.framework */; };
 		94585687465303A7CACEF1F9 /* Pods_MasterMyProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA4D0A41B1F4FFA2E0856DB /* Pods_MasterMyProjectTests.framework */; };
 		A6BA900463EBFC9873B5A88B /* Pods_MasterMyProject_MasterMyProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF60BFDDE060E1FB44DC7D4B /* Pods_MasterMyProject_MasterMyProjectUITests.framework */; };
@@ -98,6 +99,7 @@
 		18DC12F028F6F5000067A29F /* MMPButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPButton.swift; sourceTree = "<group>"; };
 		18DC12F228F6F9310067A29F /* MMPProjectDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPProjectDetailsVC.swift; sourceTree = "<group>"; };
 		18DC12F428F6F9440067A29F /* MMPProjectDetailsVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPProjectDetailsVC+UI.swift"; sourceTree = "<group>"; };
+		18E9EDC9291124B900E4B0D2 /* MMPConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPConstant.swift; sourceTree = "<group>"; };
 		24A1A666F80169629FA4771F /* Pods-MasterMyProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasterMyProjectTests.release.xcconfig"; path = "Target Support Files/Pods-MasterMyProjectTests/Pods-MasterMyProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		3A393784DA0539E0EA5354BA /* Pods-MasterMyProject-MasterMyProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasterMyProject-MasterMyProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-MasterMyProject-MasterMyProjectUITests/Pods-MasterMyProject-MasterMyProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		796CD09B4BD2AD7797A651FE /* Pods-MasterMyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasterMyProject.release.xcconfig"; path = "Target Support Files/Pods-MasterMyProject/Pods-MasterMyProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				180BAC2528EB2D340076F4B4 /* AppDelegate.swift */,
 				180BAC2728EB2D340076F4B4 /* SceneDelegate.swift */,
+				18E9EDC8291124A300E4B0D2 /* Constant */,
 				18DC12EB28F6F49C0067A29F /* IntegrationLayer */,
 				18D6A23828F5A9DA00A51A17 /* Modules */,
 				180BAC2B28EB2D340076F4B4 /* Main.storyboard */,
@@ -288,6 +291,14 @@
 				18DC12F028F6F5000067A29F /* MMPButton.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		18E9EDC8291124A300E4B0D2 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				18E9EDC9291124B900E4B0D2 /* MMPConstant.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		3069FE28F68DF0D23ED12792 /* Frameworks */ = {
@@ -558,6 +569,7 @@
 				1868D09628ED95F6002751E2 /* MMPDashbordVC.swift in Sources */,
 				18363ABC28FEFB8300BEF58B /* MMPTruckPrestartThreeVC.swift in Sources */,
 				180BAC2828EB2D340076F4B4 /* SceneDelegate.swift in Sources */,
+				18E9EDCA291124B900E4B0D2 /* MMPConstant.swift in Sources */,
 				18DC12EF28F6F4EA0067A29F /* MMPView.swift in Sources */,
 				18D6A23628F5A6D900A51A17 /* MMPDashbordVC+UI.swift in Sources */,
 				184B7F8128FD97E100430CFA /* MMPDocketTwoVC.swift in Sources */,

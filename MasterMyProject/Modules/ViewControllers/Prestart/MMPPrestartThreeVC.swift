@@ -11,7 +11,8 @@ class MMPPrestartThreeVC: MMPBaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "Prestart(2/3)"
+        addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         // Do any additional setup after loading the view.
     }
     @IBAction func backButtonAction(_ sender: UIBarButtonItem) {
