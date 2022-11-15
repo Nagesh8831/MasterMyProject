@@ -12,6 +12,7 @@ class MMPSignInVC: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var forgotPasswordButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -91,35 +92,22 @@ extension MMPSignInVC {
                    // self.stopLoading()
                     print("login_response",response)
                     if let loginJSON = value as? [String: Any] {
-                        if let statusCode = loginJSON["statusCode"] as? Int {
-                            print(statusCode)
-                            //let message = loginJSON["statusMessage"] as? String
-//                            if statusCode == 200{
-//                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "FFOtpViewController") as! FFOtpViewController
-//                                vc.isFromSignUp = false
-//                                vc.registerEmail = emailId
-//                                self.navigationController?.pushViewController(vc, animated: true)
-//                            }else if statusCode == 400{
-//                                self.alertUser("50Fifty", message: message!)
-//                            } else if statusCode == 404{
-//                                self.alertUser("50Fifty", message: "User Not Found")
-//                            } else if statusCode == 500{
-//                                self.alertUser("50Fifty", message: "User Not Found")
-//                            }
-                        }
+//                        if let statusCode = loginJSON["statusCode"] as? Int {
+//                            print(statusCode)
+//                        }
                         if let resultObject = loginJSON["resultObject"] as? [String: Any], let token = resultObject["token"] as? String, let id = resultObject["id"] as? String, let statusCode = loginJSON["statusCode"] as? Int {
                             UserDefaults.standard.set(token, forKey: "userToken")
                             UserDefaults.standard.set(id, forKey: "userId")
                             UserDefaults.standard.synchronize()
-                           /* if statusCode == 200 {
+                            if statusCode == 200 {
                                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
                                 UserDefaults.standard.set(true, forKey: "isLogin")
                                 UserDefaults.standard.synchronize()
                                 self.navigationController?.pushViewController(vc, animated: true)
-                            }*/
+                            }
                             
-                            print(token)
-                            print(id)
+                           // print(token)
+                           // print(id)
                         }
                     }
                 case .failure(let error):
