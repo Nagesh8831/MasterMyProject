@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-class MMPSignInVC: UIViewController {
+class MMPSignInVC: MMPBaseVC {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -24,12 +24,11 @@ class MMPSignInVC: UIViewController {
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
-        userLogin("nagesh.rangapure8891@gmail.com")
+        userLogin(emailTextField.text ?? "", password: passwordTextField.text ?? "")
     }
     
     @IBAction func forgotPasswordButtonAction(_ sender: Any) {
         let alertController = UIAlertController(title: "Forgot Password?", message: "Please enter your registered email", preferredStyle: .alert)
-        
         
         let saveAction = UIAlertAction(title: "Submit", style: .default, handler: {
             alert -> Void in
@@ -37,12 +36,12 @@ class MMPSignInVC: UIViewController {
             let firstTextField = alertController.textFields![0] as UITextField
             
             print("firstName \(firstTextField.text!)")
-//            if !self.isValidEmail(emaild: firstTextField.text!){
-//                self.alert("Email", subTitle: "Please Enter valid Email")
-//            } else{
-//            self.forgotPassword(firstTextField.text ?? "")
-//            }
+            if !MMPUtilities.isValidEmail(emaild: firstTextField.text!) {
+                self.alertUser("Email", message: "Please Enter valid Email")
+            } else {
             self.forgotPassword(firstTextField.text ?? "")
+            }
+           // self.forgotPassword(firstTextField.text ?? "")
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
@@ -73,57 +72,55 @@ class MMPSignInVC: UIViewController {
 }
 
 extension MMPSignInVC {
-    func userLogin(_ emailId:String){
-       // guard validateData() else { return }
+    func userLogin(_ emailId:String, password:String){
+        guard validateData() else { return }
         let parameters = ["email": emailId,
-                          "password": "admin"
+                          "password": password
         ]
-      //  startLoading()
+        startLoading()
         print(parameters)
         //let url = "http://52.63.247.85/mastermyproject/restapi"
         let urlRequest = "http://52.63.247.85/mastermyproject/restapi/users/login"
         //let urlRequest = String (format: "%@%@%@", MMPConstant.baseURL,MMPConstant.USER_LOGIN)
         print(urlRequest)
         AF.request( urlRequest,method: .post ,parameters: parameters,encoding:
-            JSONEncoding.default, headers: nil)
-            .responseJSON { response in
-                switch response.result {
-                case .success(let value):
-                   // self.stopLoading()
-                    print("login_response",response)
-                    if let loginJSON = value as? [String: Any] {
-//                        if let statusCode = loginJSON["statusCode"] as? Int {
-//                            print(statusCode)
-//                        }
-                        if let resultObject = loginJSON["resultObject"] as? [String: Any], let token = resultObject["token"] as? String, let id = resultObject["id"] as? String, let statusCode = loginJSON["statusCode"] as? Int {
-                            UserDefaults.standard.set(token, forKey: "userToken")
-                            UserDefaults.standard.set(id, forKey: "userId")
-                            UserDefaults.standard.synchronize()
-                            if statusCode == 200 {
-                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
+                        JSONEncoding.default, headers: nil)
+        .responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                self.stopLoading()
+                print("login_response",response)
+                if let loginJSON = value as? [String: Any] {
+                    if let statusCode = loginJSON["statusCode"] as? Int,let meesage = loginJSON["message"] as? String{
+                        print(statusCode)
+                        if statusCode == 200 {
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
+                            if let resultObject = loginJSON["resultObject"] as? [String: Any], let token = resultObject["token"] as? String, let id = resultObject["id"] as? String {
+                                UserDefaults.standard.set(token, forKey: "userToken")
+                                UserDefaults.standard.set(id, forKey: "userId")
                                 UserDefaults.standard.set(true, forKey: "isLogin")
                                 UserDefaults.standard.synchronize()
-                                self.navigationController?.pushViewController(vc, animated: true)
                             }
-                            
-                           // print(token)
-                           // print(id)
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else if statusCode == 403 {
+                            self.alertUser("Error", message: meesage)
                         }
                     }
-                case .failure(let error):
-                    print(error)
-                    DispatchQueue.main.async {
-                        //self.present(alert, animated: true, completion: nil)
-                    }
                 }
-                
+            case .failure(let error):
+                print("error",error)
+                self.stopLoading()
+                DispatchQueue.main.async {
+                    //self.present(alert, animated: true, completion: nil)
+                }
+            }
         }
     }
     
     func forgotPassword(_ email : String){
-        // guard validateData() else { return }
-         let parameters = ["email": "nagesh.rangapure8891@gmail.com"]//email]
-       //  startLoading()
+         let parameters = ["email": email
+         ]
+         startLoading()
          print(parameters)
          //let url = "http://52.63.247.85/mastermyproject/restapi"
          let urlRequest = "http://52.63.247.85/mastermyproject/restapi/users/forgotpass"
@@ -138,7 +135,7 @@ extension MMPSignInVC {
              .responseJSON { response in
                  switch response.result {
                  case .success(let value):
-                    // self.stopLoading()
+                    self.stopLoading()
                      print("forgotPassword_response",response)
                      if let loginJSON = value as? [String: Any] {
                          if let statusCode = loginJSON["statusCode"] as? Int {
@@ -146,7 +143,8 @@ extension MMPSignInVC {
                          }
                      }
                  case .failure(let error):
-                     print(error)
+                     print("forgotPassword_response",error)
+                     self.stopLoading()
                      DispatchQueue.main.async {
                          //self.present(alert, animated: true, completion: nil)
                      }
@@ -156,6 +154,20 @@ extension MMPSignInVC {
      }
 }
 
+extension MMPSignInVC {
+    func validateData() -> Bool {
+        if !MMPUtilities.valiadateBlankText(text: emailTextField.text) {
+            alertUser("Master My Project", message: "Please enter email address")
+            return false
+        }
+        if !MMPUtilities.valiadateBlankText(text: passwordTextField.text) {
+            alertUser("Master My Project", message: "Please enter password")
+            return false
+        }
+
+        return true
+    }
+}
 
 
 @IBDesignable

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import KRProgressHUD
 class MMPBaseVC: UIViewController {
 
     override func viewDidLoad() {
@@ -42,6 +42,23 @@ class MMPBaseVC: UIViewController {
             topMostViewController = presentedViewController
         }
         return topMostViewController
+    }
+    
+    func alertUser(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func startLoading(){
+        KRProgressHUD.show()
+        KRProgressHUD.set(activityIndicatorViewColors: [MMPConstant.blueColor])
+    }
+    
+    func stopLoading(){
+        KRProgressHUD.dismiss()
     }
     /*
     // MARK: - Navigation

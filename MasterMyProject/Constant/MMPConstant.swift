@@ -43,7 +43,7 @@ class MMPConstant: NSObject {
     static let GET_CUSTOMER_CARD = "debitCardService/getCustomerCards/"
     
     //COLOR
-    static let redColor = UIColor(red: 238/255.0, green: 18/255.0, blue: 52/255.0, alpha: 1.0)
+    static let blueColor = UIColor(red: 23/255.0, green: 51/255.0, blue: 98/255.0, alpha: 1.0)
     static let greenColor = UIColor(red: 37/255.0, green: 186/255.0, blue: 42/255.0, alpha: 1.0)
     static let yellowColor = UIColor(red: 235/255.0, green: 151/255.0, blue: 0/255.0, alpha: 1.0)
     static let backgroundFillColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)

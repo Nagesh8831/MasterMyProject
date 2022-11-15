@@ -8,6 +8,7 @@ target 'MasterMyProject' do
   # Pods for MasterMyProject
 	pod 'Alamofire'
   pod 'IQKeyboardManagerSwift'
+  pod "KRProgressHUD"
   target 'MasterMyProjectTests' do
     inherit! :search_paths
     # Pods for testing

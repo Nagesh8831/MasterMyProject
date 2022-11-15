@@ -24,6 +24,7 @@ class MMPDashbordVC: MMPBaseVC {
        // self.showAlerViewController("Are you operating Machine?", imageName: "machine")
         // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         setupUI()
         getProjectByUserId()
@@ -48,7 +49,7 @@ class MMPDashbordVC: MMPBaseVC {
 extension MMPDashbordVC {
     
     func getProjectByUserId() {
-        
+        startLoading()
         let token = UserDefaults.standard.string(forKey: "userToken")
         let userId = UserDefaults.standard.string(forKey: "userId") ?? "0"
         let _headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
@@ -60,7 +61,7 @@ extension MMPDashbordVC {
                 switch response.result {
                 case .success(let value):
                     print("project_response",response)
-                   // self.stopLoading()
+                    self.stopLoading()
                     self.projectListTableView.reloadData()
                     if let projectJSON = value as? [String: Any] {
                         let status = projectJSON["statusCode"] as? Int
@@ -79,6 +80,7 @@ extension MMPDashbordVC {
                     }
                 case .failure(let error):
                     print(error)
+                    self.stopLoading()
                     DispatchQueue.main.async {
                         //self.present(alert, animated: true, completion: nil)
                     }
