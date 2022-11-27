@@ -200,6 +200,7 @@
                         <outlet property="projectTitleLabel" destination="4v6-VB-8jP" id="ATS-jU-m2I"/>
                         <outlet property="timeLabel" destination="W8S-Se-aGz" id="j8A-qZ-7ES"/>
                         <outlet property="timeTitleLabel" destination="XfN-QB-tJd" id="7y0-MM-xKZ"/>
+                        <outlet property="workerNameLabel" destination="qgq-Lt-RbM" id="CSl-VX-YWO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="roX-Aj-YxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

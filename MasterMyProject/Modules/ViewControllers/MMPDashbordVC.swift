@@ -17,6 +17,7 @@ class MMPDashbordVC: MMPBaseVC {
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var projectListTableView: UITableView!
     @IBOutlet weak var noDataLabel: UILabel!
+    @IBOutlet weak var workerNameLabel: UILabel!
     var projectArray = [[String:AnyObject]]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class MMPDashbordVC: MMPBaseVC {
     override func viewWillAppear(_ animated: Bool) {
         setupUI()
         getProjectByUserId()
+        getWorkerByUserId()
     }
     
     @IBAction func profileButtonAction(_ sender: UIButton) {
@@ -51,12 +53,12 @@ extension MMPDashbordVC {
     func getProjectByUserId() {
         startLoading()
         let token = UserDefaults.standard.string(forKey: "userToken")
-        let _headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
+        let headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
                                       "Content-Type": "application/json"]
         let urlResponce = String(format: "%@%@",MMPConstant.baseURL,MMPConstant.GET_ALL_PROJECT)
         print(urlResponce)
         AF.request( urlResponce,method: .get ,parameters: nil,encoding:
-            JSONEncoding.default, headers: _headers).responseJSON { response in
+            JSONEncoding.default, headers: headers).responseJSON { response in
                 switch response.result {
                 case .success(let value):
                     print("project_response",response)
@@ -76,6 +78,40 @@ extension MMPDashbordVC {
                                 self.projectListTableView.isHidden = false
                             }
                             self.projectListTableView.reloadData()
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                    self.stopLoading()
+                    DispatchQueue.main.async {
+                        //self.present(alert, animated: true, completion: nil)
+                    }
+                }
+        }
+    }
+    
+    func getWorkerByUserId() {
+       // startLoading()
+        let token = UserDefaults.standard.string(forKey: "userToken")
+        let userId = UserDefaults.standard.string(forKey: "userId") ?? "0"
+        let headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
+                                      "Content-Type": "application/json"]
+        let urlResponce = String(format: "%@%@",MMPConstant.baseURL,MMPConstant.GET_WORKER_BY_ID  + userId)
+        print(urlResponce)
+        AF.request( urlResponce,method: .get ,parameters: nil,encoding:
+            JSONEncoding.default, headers: headers).responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    print("worker_response",response)
+                    self.stopLoading()
+                    self.projectListTableView.reloadData()
+                    if let projectJSON = value as? [String: Any] {
+                        let status = projectJSON["status_code"] as? Int
+                        let message = projectJSON["message"] as? String
+                        if status == 200 {
+                            guard let workerDetails = projectJSON["result_object"] as? [String:AnyObject] else {return}
+                            guard let name = workerDetails["name"] else {return}
+                            self.workerNameLabel.text = "Hello, \(name)"
                         }
                     }
                 case .failure(let error):
