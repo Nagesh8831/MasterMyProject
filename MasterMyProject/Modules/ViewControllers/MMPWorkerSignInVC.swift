@@ -120,23 +120,24 @@ class MMPWorkerSignInVC: MMPBaseVC {
 
 extension MMPWorkerSignInVC {
     func projectSignIn(){
-       // guard validateData() else { return }
+        guard validateData() else { return }
         let parameters = ["pro_id": projectId ?? "",
                           "que_1": statusPPE,
                           "que_2": onSiteStatus,
                           "que_3": goAheadStatus,
                           "que_4": affectedStatus,
-                          "latitude": 18.46437824309527,
-                          "longitude": 73.78259444851551,
-                          "datetime" :"2022-11-27 09:07:02"
-        ] as [String : Any]
+                          "latitude": lat,
+                          "longitude": long,
+                          "datetime" :dateTime
+        ]
         let token = UserDefaults.standard.string(forKey: "userToken")
         let headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
                                       "Content-Type": "application/json"]
         startLoading()
         print(parameters)
         //let url = "http://52.63.247.85/mastermyproject/restapi"
-        let urlRequest = "http://52.63.247.85/mastermyproject/restapi/projects/signin"
+        let urlRequest = String(format: "%@%@",MMPConstant.baseURL,MMPConstant.PROJECT_SIGN_IN)
+       // let urlRequest = "http://52.63.247.85/mastermyproject/restapi/projects/signin"
       //  let urlRequest = String (format: "%@%@%@", MMPConstant.baseURL,MMPConstant.PROJECT_SIGN_IN)
         print(urlRequest)
         AF.request( urlRequest,method: .post ,parameters: parameters,encoding:
@@ -180,45 +181,22 @@ extension MMPWorkerSignInVC {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         self.dateTime = df.string(from: date)
-        print("timestamp",dateTime)
-        print("currentTime",currentTime)
-        print("currentDate",currentDate)
         self.workerDateLabel.text = currentDate
         self.workerCurrentTimeLabel.text = currentTime
         
+    }
+    func validateData() -> Bool {
+        if !MMPUtilities.valiadateBlankText(text: statusPPE) || !MMPUtilities.valiadateBlankText(text: onSiteStatus) || !MMPUtilities.valiadateBlankText(text: goAheadStatus) || !MMPUtilities.valiadateBlankText(text: affectedStatus) {
+            alertUser("Master My Project", message: "Please select all field")
+            return false
+        }
+
+        return true
     }
 }
 
 extension MMPWorkerSignInVC : CLLocationManagerDelegate {
     //MARK: - location delegate methods
-/*func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    let userLocation :CLLocation = locations[0] as CLLocation
-
-    print("user latitude = \(userLocation.coordinate.latitude)")
-    print("user longitude = \(userLocation.coordinate.longitude)")
-
-   // self.labelLat.text = "\(userLocation.coordinate.latitude)"
-   // self.labelLongi.text = "\(userLocation.coordinate.longitude)"
-
-    let geocoder = CLGeocoder()
-    geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
-        if (error != nil){
-            print("error in reverseGeocode")
-        }
-        let placemark = placemarks! as [CLPlacemark]
-        if placemark.count>0{
-            let placemark = placemarks![0]
-//            print(placemark.region!)
-//            print(placemark.administrativeArea!)
-//            print(placemark.country!)
-
-           // self.labelAdd.text = "\(placemark.locality!), \(placemark.administrativeArea!), \(placemark.country!)"
-            print("\(placemark.region!), \(placemark.administrativeArea!), \(placemark.country!)")
-            self.workerLocationLabel.text = "\(placemark.locality!), \(placemark.administrativeArea!), \(placemark.country!)"
-        }
-    }
-
-}*/
     func geocode(latitude: Double, longitude: Double, completion: @escaping (CLPlacemark?, Error?) -> ())  {
             CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: latitude, longitude: longitude)) { completion($0?.first, $1) }
         }
@@ -227,8 +205,8 @@ extension MMPWorkerSignInVC : CLLocationManagerDelegate {
         let userLocation :CLLocation = locations[0] as CLLocation
         self.lat = "\(userLocation.coordinate.latitude)"
         self.long = "\(userLocation.coordinate.longitude)"
-        print("user latitude = \(userLocation.coordinate.latitude)")
-        print("user longitude = \(userLocation.coordinate.longitude)")
+      //  print("user latitude = \(userLocation.coordinate.latitude)")
+      //  print("user longitude = \(userLocation.coordinate.longitude)")
             //Access the last object from locations to get perfect current location
             if let location = locations.last {
 
@@ -239,12 +217,12 @@ extension MMPWorkerSignInVC : CLLocationManagerDelegate {
                     // you should always update your UI in the main thread
                     DispatchQueue.main.async {
                         //  update UI here
-                        print("address1:", placemark.thoroughfare ?? "")
+                       /* print("address1:", placemark.thoroughfare ?? "")
                         print("address2:", placemark.subThoroughfare ?? "")
                         print("city:",     placemark.locality ?? "")
                         print("state:",    placemark.administrativeArea ?? "")
                         print("zip code:", placemark.postalCode ?? "")
-                        print("country:",  placemark.country ?? "")
+                        print("country:",  placemark.country ?? "")*/
                       //  self.workerLocationLabel.text = "\(placemark.thoroughfare ?? ""), \(placemark.locality ?? ""), \(placemark.country ?? "")"
                         self.workerLocationLabel.text = "\(placemark.locality ?? ""), \(placemark.administrativeArea ?? ""), \(placemark.country ?? "")"
                     }

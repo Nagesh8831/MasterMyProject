@@ -56,12 +56,12 @@ extension MMPDashbordVC {
         let headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
                                       "Content-Type": "application/json"]
         let urlResponce = String(format: "%@%@",MMPConstant.baseURL,MMPConstant.GET_ALL_PROJECT)
-        print(urlResponce)
+       // print(urlResponce)
         AF.request( urlResponce,method: .get ,parameters: nil,encoding:
             JSONEncoding.default, headers: headers).responseJSON { response in
                 switch response.result {
                 case .success(let value):
-                    print("project_response",response)
+                  //  print("project_response",response)
                     self.stopLoading()
                     self.projectListTableView.reloadData()
                     if let projectJSON = value as? [String: Any] {
@@ -96,17 +96,17 @@ extension MMPDashbordVC {
         let headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
                                       "Content-Type": "application/json"]
         let urlResponce = String(format: "%@%@",MMPConstant.baseURL,MMPConstant.GET_WORKER_BY_ID  + userId)
-        print(urlResponce)
+       // print(urlResponce)
         AF.request( urlResponce,method: .get ,parameters: nil,encoding:
             JSONEncoding.default, headers: headers).responseJSON { response in
                 switch response.result {
                 case .success(let value):
-                    print("worker_response",response)
+                  //  print("worker_response",response)
                     self.stopLoading()
                     self.projectListTableView.reloadData()
                     if let projectJSON = value as? [String: Any] {
                         let status = projectJSON["status_code"] as? Int
-                        let message = projectJSON["message"] as? String
+                      //  let message = projectJSON["message"] as? String
                         if status == 200 {
                             guard let workerDetails = projectJSON["result_object"] as? [String:AnyObject] else {return}
                             guard let name = workerDetails["name"] else {return}
