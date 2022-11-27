@@ -48,6 +48,7 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
     @objc func signOutButtonAction(_ sender : UIButton) {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPWorkerSignInVC") as! MMPWorkerSignInVC
+        vc.projectId = projectArray[sender.tag]["id"] as? String
         self.navigationController?.pushViewController(vc, animated: true)
         
         

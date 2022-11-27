@@ -91,7 +91,6 @@ extension MMPDashbordVC {
     }
     
     func getWorkerByUserId() {
-       // startLoading()
         let token = UserDefaults.standard.string(forKey: "userToken")
         let userId = UserDefaults.standard.string(forKey: "userId") ?? "0"
         let headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
