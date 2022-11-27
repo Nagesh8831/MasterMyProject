@@ -128,7 +128,7 @@ extension MMPWorkerSignInVC {
                           "que_4": affectedStatus,
                           "latitude": 18.46437824309527,
                           "longitude": 73.78259444851551,
-                          "datetime" :dateTime
+                          "datetime" :"2022-11-27 09:07:02"
         ] as [String : Any]
         let token = UserDefaults.standard.string(forKey: "userToken")
         let headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
@@ -136,7 +136,7 @@ extension MMPWorkerSignInVC {
         startLoading()
         print(parameters)
         //let url = "http://52.63.247.85/mastermyproject/restapi"
-        let urlRequest = "http://52.63.247.85/mastermyproject/restapiqu/projects/signin"
+        let urlRequest = "http://52.63.247.85/mastermyproject/restapi/projects/signin"
       //  let urlRequest = String (format: "%@%@%@", MMPConstant.baseURL,MMPConstant.PROJECT_SIGN_IN)
         print(urlRequest)
         AF.request( urlRequest,method: .post ,parameters: parameters,encoding:

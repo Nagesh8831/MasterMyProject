@@ -123,7 +123,7 @@ extension MMPSignInVC {
          startLoading()
          print(parameters)
          //let url = "http://52.63.247.85/mastermyproject/restapi"
-         let urlRequest = "http://52.63.247.85/mastermyproject/restapi/users/forgotpass"
+         let urlRequest = "http://52.63.247.85/mastermyproject/restapi/workers/forgotpass"
          //let urlRequest = String (format: "%@%@%@", MMPConstant.baseURL,MMPConstant.FORGOT_PASSWORD)
          print(urlRequest)
         let token = UserDefaults.standard.string(forKey: "userToken")
