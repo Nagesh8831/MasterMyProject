@@ -30,14 +30,15 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectTableViewCell", for: indexPath) as! ProjectTableViewCell
         cell.actionButton.tag = indexPath.row
-        //cell.actionButton.addTarget(self, action: #selector(signOutButtonAction), for: .touchUpInside)
+        cell.actionButton.addTarget(self, action: #selector(signOutButtonAction), for: .touchUpInside)
         cell.titleLabel.text = projectArray[indexPath.row]["pro_name"] as? String
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPProjectDetailsVC") as! MMPProjectDetailsVC
-//        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPProjectDetailsVC") as! MMPProjectDetailsVC
+        vc.projectId = projectArray[indexPath.row]["id"] as? String
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -45,11 +46,17 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     @objc func signOutButtonAction(_ sender : UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPWorkerSignInVC") as! MMPWorkerSignInVC
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+        
+      /*  let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
         let navController = UINavigationController(rootViewController: vc) //Add navigation controller
         navController.modalTransitionStyle = .crossDissolve
         navController.modalPresentationStyle = .overCurrentContext
-        self.present(navController, animated: true, completion: nil)
+        self.present(navController, animated: true, completion: nil)*/
         
         
         

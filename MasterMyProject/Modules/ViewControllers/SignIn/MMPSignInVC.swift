@@ -80,7 +80,7 @@ extension MMPSignInVC {
         startLoading()
         print(parameters)
         //let url = "http://52.63.247.85/mastermyproject/restapi"
-        let urlRequest = "http://52.63.247.85/mastermyproject/restapi/users/login"
+        let urlRequest = "http://52.63.247.85/mastermyproject/restapi/workers/login"
         //let urlRequest = String (format: "%@%@%@", MMPConstant.baseURL,MMPConstant.USER_LOGIN)
         print(urlRequest)
         AF.request( urlRequest,method: .post ,parameters: parameters,encoding:
@@ -91,11 +91,11 @@ extension MMPSignInVC {
                 self.stopLoading()
                 print("login_response",response)
                 if let loginJSON = value as? [String: Any] {
-                    if let statusCode = loginJSON["statusCode"] as? Int,let meesage = loginJSON["message"] as? String{
+                    if let statusCode = loginJSON["status_code"] as? Int,let meesage = loginJSON["message"] as? String{
                         print(statusCode)
                         if statusCode == 200 {
                             let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
-                            if let resultObject = loginJSON["resultObject"] as? [String: Any], let token = resultObject["token"] as? String, let id = resultObject["id"] as? String {
+                            if let resultObject = loginJSON["result_object"] as? [String: Any], let token = resultObject["token"] as? String, let id = resultObject["id"] as? String {
                                 UserDefaults.standard.set(token, forKey: "userToken")
                                 UserDefaults.standard.set(id, forKey: "userId")
                                 UserDefaults.standard.set(true, forKey: "isLogin")

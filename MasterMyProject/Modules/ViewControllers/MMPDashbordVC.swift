@@ -51,10 +51,9 @@ extension MMPDashbordVC {
     func getProjectByUserId() {
         startLoading()
         let token = UserDefaults.standard.string(forKey: "userToken")
-        let userId = UserDefaults.standard.string(forKey: "userId") ?? "0"
         let _headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
                                       "Content-Type": "application/json"]
-        let urlResponce = String(format: "%@%@",MMPConstant.baseURL,MMPConstant.GET_PROJECT_BY_USERID + userId)
+        let urlResponce = String(format: "%@%@",MMPConstant.baseURL,MMPConstant.GET_ALL_PROJECT)
         print(urlResponce)
         AF.request( urlResponce,method: .get ,parameters: nil,encoding:
             JSONEncoding.default, headers: _headers).responseJSON { response in
@@ -64,10 +63,10 @@ extension MMPDashbordVC {
                     self.stopLoading()
                     self.projectListTableView.reloadData()
                     if let projectJSON = value as? [String: Any] {
-                        let status = projectJSON["statusCode"] as? Int
+                        let status = projectJSON["status_code"] as? Int
                         let message = projectJSON["message"] as? String
                         if status == 200 {
-                            self.projectArray = projectJSON["resultObject"] as? [[String:AnyObject]] ?? []
+                            self.projectArray = projectJSON["result_object"] as? [[String:AnyObject]] ?? []
                             if self.projectArray.count == 0 {
                                 self.noDataLabel.isHidden = false
                                 self.projectListTableView.isHidden = true
@@ -76,6 +75,7 @@ extension MMPDashbordVC {
                                 self.noDataLabel.isHidden = true
                                 self.projectListTableView.isHidden = false
                             }
+                            self.projectListTableView.reloadData()
                         }
                     }
                 case .failure(let error):

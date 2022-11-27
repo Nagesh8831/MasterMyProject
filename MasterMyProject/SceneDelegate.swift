@@ -57,6 +57,17 @@ extension SceneDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = UIColor(red: 23.0/255.0, green: 51.0/255.0, blue: 98.0/255.0, alpha: 1.0)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        UITextField.appearance().tintColor = .black
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            appearance.backgroundColor = UIColor(red: 23.0/255.0, green: 51.0/255.0, blue: 98.0/255.0, alpha: 1.0)
+            //let backImage = UIImage(named: "backArrow")?.withRenderingMode(.alwaysOriginal)
+            UINavigationBar.appearance().backIndicatorImage = UIImage(named: "backArrow")?.withRenderingMode(.alwaysOriginal)
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
         let saveValue = UserDefaults.standard.bool(forKey: "isLogin")
         if saveValue {
             getDashboard()
