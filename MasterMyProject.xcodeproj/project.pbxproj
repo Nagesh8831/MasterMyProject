@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		043B2E1C2923E164006D0C1B /* MMPUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B2E1B2923E164006D0C1B /* MMPUtilities.swift */; };
 		04544D772932502300921A01 /* MMPWorkerSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04544D762932502300921A01 /* MMPWorkerSignInVC.swift */; };
+		049398D82934FDD50033FA46 /* MMPPrestartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049398D62934FDD50033FA46 /* MMPPrestartTableViewCell.swift */; };
+		049398D92934FDD50033FA46 /* MMPPrestartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049398D72934FDD50033FA46 /* MMPPrestartTableViewCell.xib */; };
+		049398DB293500A90033FA46 /* MMPPrestartOneVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049398DA293500A90033FA46 /* MMPPrestartOneVC+UI.swift */; };
+		049398DD293519840033FA46 /* MMPPrestartTwoVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049398DC293519840033FA46 /* MMPPrestartTwoVC+UI.swift */; };
+		049398DF29351E1E0033FA46 /* MMPTruckPrestartOneVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049398DE29351E1E0033FA46 /* MMPTruckPrestartOneVC+UI.swift */; };
+		049398E129351F450033FA46 /* MMPTruckPrestartTwoVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049398E029351F450033FA46 /* MMPTruckPrestartTwoVC+UI.swift */; };
+		049398E329351F5D0033FA46 /* MMPTruckPrestartThreeVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049398E229351F5D0033FA46 /* MMPTruckPrestartThreeVC+UI.swift */; };
 		180B55D328F73A820087898D /* MMPProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B55D228F73A820087898D /* MMPProfileVC.swift */; };
 		180B55D528F740E90087898D /* MMPAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B55D428F740E90087898D /* MMPAlertVC.swift */; };
 		180B55D728F747A10087898D /* MMPAlertVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B55D628F747A10087898D /* MMPAlertVC+UI.swift */; };
@@ -67,6 +74,13 @@
 /* Begin PBXFileReference section */
 		043B2E1B2923E164006D0C1B /* MMPUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPUtilities.swift; sourceTree = "<group>"; };
 		04544D762932502300921A01 /* MMPWorkerSignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPWorkerSignInVC.swift; sourceTree = "<group>"; };
+		049398D62934FDD50033FA46 /* MMPPrestartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPPrestartTableViewCell.swift; sourceTree = "<group>"; };
+		049398D72934FDD50033FA46 /* MMPPrestartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MMPPrestartTableViewCell.xib; sourceTree = "<group>"; };
+		049398DA293500A90033FA46 /* MMPPrestartOneVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPPrestartOneVC+UI.swift"; sourceTree = "<group>"; };
+		049398DC293519840033FA46 /* MMPPrestartTwoVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPPrestartTwoVC+UI.swift"; sourceTree = "<group>"; };
+		049398DE29351E1E0033FA46 /* MMPTruckPrestartOneVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPTruckPrestartOneVC+UI.swift"; sourceTree = "<group>"; };
+		049398E029351F450033FA46 /* MMPTruckPrestartTwoVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPTruckPrestartTwoVC+UI.swift"; sourceTree = "<group>"; };
+		049398E229351F5D0033FA46 /* MMPTruckPrestartThreeVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPTruckPrestartThreeVC+UI.swift"; sourceTree = "<group>"; };
 		180B55D228F73A820087898D /* MMPProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPProfileVC.swift; sourceTree = "<group>"; };
 		180B55D428F740E90087898D /* MMPAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPAlertVC.swift; sourceTree = "<group>"; };
 		180B55D628F747A10087898D /* MMPAlertVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MMPAlertVC+UI.swift"; sourceTree = "<group>"; };
@@ -232,11 +246,16 @@
 			isa = PBXGroup;
 			children = (
 				18BFAC0D28FDD8BE00A98475 /* MMPPrestartOneVC.swift */,
+				049398DA293500A90033FA46 /* MMPPrestartOneVC+UI.swift */,
 				18BFAC0F28FDDD0900A98475 /* MMPPrestartTwoVC.swift */,
+				049398DC293519840033FA46 /* MMPPrestartTwoVC+UI.swift */,
 				18BFAC1128FDDD1400A98475 /* MMPPrestartThreeVC.swift */,
 				18363AB728FEFB6700BEF58B /* MMPTruckPrestartOneVC.swift */,
+				049398DE29351E1E0033FA46 /* MMPTruckPrestartOneVC+UI.swift */,
 				18363AB928FEFB7400BEF58B /* MMPTruckPrestartTwoVC.swift */,
+				049398E029351F450033FA46 /* MMPTruckPrestartTwoVC+UI.swift */,
 				18363ABB28FEFB8300BEF58B /* MMPTruckPrestartThreeVC.swift */,
+				049398E229351F5D0033FA46 /* MMPTruckPrestartThreeVC+UI.swift */,
 			);
 			path = Prestart;
 			sourceTree = "<group>";
@@ -277,6 +296,8 @@
 			children = (
 				18D6A23A28F5AA0F00A51A17 /* ProjectTableViewCell.swift */,
 				18D6A23B28F5AA0F00A51A17 /* ProjectTableViewCell.xib */,
+				049398D62934FDD50033FA46 /* MMPPrestartTableViewCell.swift */,
+				049398D72934FDD50033FA46 /* MMPPrestartTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -429,6 +450,7 @@
 				180BAC3228EB2D360076F4B4 /* LaunchScreen.storyboard in Resources */,
 				180BAC2F28EB2D360076F4B4 /* Assets.xcassets in Resources */,
 				180BAC2D28EB2D340076F4B4 /* Main.storyboard in Resources */,
+				049398D92934FDD50033FA46 /* MMPPrestartTableViewCell.xib in Resources */,
 				18D6A23D28F5AA0F00A51A17 /* ProjectTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,6 +584,7 @@
 				180B55D728F747A10087898D /* MMPAlertVC+UI.swift in Sources */,
 				18DC12F128F6F5000067A29F /* MMPButton.swift in Sources */,
 				18BFAC1228FDDD1400A98475 /* MMPPrestartThreeVC.swift in Sources */,
+				049398DF29351E1E0033FA46 /* MMPTruckPrestartOneVC+UI.swift in Sources */,
 				18377D2828F88AC100D293EE /* MMPDocketVC.swift in Sources */,
 				1868D09228ED948F002751E2 /* MMPSignInVC.swift in Sources */,
 				18DC12F328F6F9310067A29F /* MMPProjectDetailsVC.swift in Sources */,
@@ -570,10 +593,14 @@
 				18363ABA28FEFB7400BEF58B /* MMPTruckPrestartTwoVC.swift in Sources */,
 				18BFAC0E28FDD8BE00A98475 /* MMPPrestartOneVC.swift in Sources */,
 				180BAC2628EB2D340076F4B4 /* AppDelegate.swift in Sources */,
+				049398DD293519840033FA46 /* MMPPrestartTwoVC+UI.swift in Sources */,
+				049398DB293500A90033FA46 /* MMPPrestartOneVC+UI.swift in Sources */,
 				18377D2628F88A5C00D293EE /* MMPSignOutAlertVC.swift in Sources */,
 				180B55D528F740E90087898D /* MMPAlertVC.swift in Sources */,
 				180B55D328F73A820087898D /* MMPProfileVC.swift in Sources */,
 				1868D09628ED95F6002751E2 /* MMPDashbordVC.swift in Sources */,
+				049398E329351F5D0033FA46 /* MMPTruckPrestartThreeVC+UI.swift in Sources */,
+				049398D82934FDD50033FA46 /* MMPPrestartTableViewCell.swift in Sources */,
 				18363ABC28FEFB8300BEF58B /* MMPTruckPrestartThreeVC.swift in Sources */,
 				180BAC2828EB2D340076F4B4 /* SceneDelegate.swift in Sources */,
 				18E9EDCA291124B900E4B0D2 /* MMPConstant.swift in Sources */,
@@ -584,6 +611,7 @@
 				18DC12F528F6F9440067A29F /* MMPProjectDetailsVC+UI.swift in Sources */,
 				1868D09428ED94E4002751E2 /* MMPSignInVC+UI.swift in Sources */,
 				180B55D928F748CE0087898D /* MMPBaseVC.swift in Sources */,
+				049398E129351F450033FA46 /* MMPTruckPrestartTwoVC+UI.swift in Sources */,
 				04544D772932502300921A01 /* MMPWorkerSignInVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

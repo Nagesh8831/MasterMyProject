@@ -11,11 +11,12 @@ class MMPConstant: NSObject {
     
     static let baseURL = "http://52.63.247.85/mastermyproject/restapi/" //Live
     static let USER_LOGIN = "workers/login"
-    static let GET_WORKER_BY_ID = "/workers/getworker/"
+    static let GET_WORKER_BY_ID = "workers/getworker/"
     static let FORGOT_PASSWORD = "workers/forgotpass"
     static let GET_PROJECT_BY_USERID = "projects/getproject/"
     static let GET_ALL_PROJECT = "projects/getprojects"
-    static let  PROJECT_SIGN_IN = "/projects/signin"
+    static let PROJECT_SIGN_IN = "projects/signin"
+    static let GET_PRESTART_CHECK_LIST = "projects/getprestartchecklist?plant_type_id="
   
     
     //COLOR

@@ -8,10 +8,13 @@
 import UIKit
 
 class MMPTruckPrestartThreeVC: MMPBaseVC {
-
+    @IBOutlet weak var prestartTwoTableView: UITableView!
+    var projectId: String?
+    var categoryCArray = [[String:AnyObject]]()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Prestart(3/3)"
+        setUpUI()
         addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         // Do any additional setup after loading the view.
     }

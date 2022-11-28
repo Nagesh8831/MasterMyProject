@@ -26,13 +26,14 @@ class MMPBaseVC: UIViewController {
 
     }
     
-    func showAlerViewController(_ message: String, imageName: String) {
+    func showAlerViewController(_ message: String, imageName: String, projectId: String) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPAlertVC") as!MMPAlertVC
         let navController = UINavigationController(rootViewController: vc) //Add navigation controller
         navController.modalTransitionStyle = .crossDissolve
         navController.modalPresentationStyle = .overCurrentContext
         vc.titleString = message
         vc.imageString = imageName
+        vc.projectId = projectId
         self.present(navController, animated: true)
     }
     

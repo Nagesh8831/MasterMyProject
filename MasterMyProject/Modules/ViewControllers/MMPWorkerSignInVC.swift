@@ -104,7 +104,9 @@ class MMPWorkerSignInVC: MMPBaseVC {
         }
     
     @IBAction func projectSignInAction(_ sender: Any) {
-        projectSignIn()
+       // projectSignIn()
+        self.showAlerViewController("Are you operating Machine?", imageName: "machine", projectId: projectId ?? "")
+        
     }
     /*
     // MARK: - Navigation

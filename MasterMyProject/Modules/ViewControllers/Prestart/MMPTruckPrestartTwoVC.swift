@@ -8,10 +8,14 @@
 import UIKit
 
 class MMPTruckPrestartTwoVC: MMPBaseVC {
-
+    @IBOutlet weak var prestartTwoTableView: UITableView!
+    var projectId: String?
+    var categoryBArray = [[String:AnyObject]]()
+    var categoryCArray = [[String:AnyObject]]()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Prestart(2/3)"
+        setUpUI()
         addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         // Do any additional setup after loading the view.
     }
@@ -22,6 +26,7 @@ class MMPTruckPrestartTwoVC: MMPBaseVC {
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartThreeVC") as! MMPTruckPrestartThreeVC
+        vc.categoryCArray = categoryCArray
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
