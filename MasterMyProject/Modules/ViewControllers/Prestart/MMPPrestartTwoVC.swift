@@ -29,7 +29,7 @@ class MMPPrestartTwoVC: MMPBaseVC {
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartThreeVC") as! MMPPrestartThreeVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
     /*

@@ -16,8 +16,9 @@ class MMPConstant: NSObject {
     static let GET_PROJECT_BY_USERID = "projects/getproject/"
     static let GET_ALL_PROJECT = "projects/getprojects"
     static let PROJECT_SIGN_IN = "projects/signin"
+    static let GET_PLANTS = "projects/getplants?plant_type_id="
     static let GET_PRESTART_CHECK_LIST = "projects/getprestartchecklist?plant_type_id="
-  
+  static let PROJECTID_CONSTAT = "&pro_id="
     
     //COLOR
     static let blueColor = UIColor(red: 23/255.0, green: 51/255.0, blue: 98/255.0, alpha: 1.0)

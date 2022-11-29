@@ -27,7 +27,7 @@ class MMPAlertVC: MMPBaseVC {
 //        self.dismiss(animated: true)
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 ) {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartOneVC") as! MMPPrestartOneVC
-            // vc.delegate = self
+             vc.projectId = projectId
             self.navigationController?.pushViewController(vc, animated: true)
        // }
     }
@@ -41,6 +41,7 @@ class MMPAlertVC: MMPBaseVC {
 //        })
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
         // vc.delegate = self
+        vc.projectId = projectId
         self.navigationController?.pushViewController(vc, animated: true)
         
         //self.present(vc, animated: true)

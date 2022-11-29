@@ -7,8 +7,9 @@
 
 import UIKit
 import KRProgressHUD
-class MMPBaseVC: UIViewController {
-
+class MMPBaseVC: UIViewController, UIPickerViewDelegate {
+    let plantListPicker = UIPickerView()
+    let toolbar = UIToolbar()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,6 +61,18 @@ class MMPBaseVC: UIViewController {
     
     func stopLoading(){
         KRProgressHUD.dismiss()
+    }
+    
+    func createPickerView() {
+        plantListPicker.delegate = self
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(action));
+        toolbar.setItems([doneButton], animated: true)
+        toolbar.isUserInteractionEnabled = true
+    }
+    
+    @objc func action() {
+        view.endEditing(true)
     }
     /*
     // MARK: - Navigation
