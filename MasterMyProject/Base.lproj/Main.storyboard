@@ -36,13 +36,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="76.5" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Projects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4v6-VB-8jP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="33"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pc8-Wl-lnW">
-                                                        <rect key="frame" x="0.0" y="33" width="76.5" height="47"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pc8-Wl-lnW">
+                                                        <rect key="frame" x="0.0" y="18" width="76.5" height="62"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -195,7 +195,7 @@
                         <outlet property="earnTitleLabel" destination="ssb-NI-fFq" id="0E0-Jv-KMh"/>
                         <outlet property="noDataLabel" destination="c8n-yT-SIf" id="mee-ao-Hcr"/>
                         <outlet property="profileButton" destination="fiF-Kp-fdy" id="mLh-tT-d9A"/>
-                        <outlet property="projectLabel" destination="Pc8-Wl-lnW" id="dSy-CG-shp"/>
+                        <outlet property="projectCountLabel" destination="Pc8-Wl-lnW" id="6h9-kM-UeY"/>
                         <outlet property="projectListTableView" destination="lTb-cL-faa" id="J70-TR-Ul2"/>
                         <outlet property="projectTitleLabel" destination="4v6-VB-8jP" id="ATS-jU-m2I"/>
                         <outlet property="timeLabel" destination="W8S-Se-aGz" id="j8A-qZ-7ES"/>
@@ -828,6 +828,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fpv-Lo-Igz"/>
+                    <connections>
+                        <outlet property="compnyNameLabel" destination="iT8-WU-a9O" id="XYe-ne-LSF"/>
+                        <outlet property="idLabel" destination="oeZ-Te-PGh" id="4uT-6F-Ebl"/>
+                        <outlet property="nameLabel" destination="VXZ-ch-VM2" id="Arb-0c-apZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Tr-as-kPL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

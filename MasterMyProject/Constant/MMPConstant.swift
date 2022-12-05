@@ -7,6 +7,11 @@
 
 import Foundation
 import UIKit
+enum ProjectStatus {
+    case signed_in
+    case signed_out
+    case new
+}
 class MMPConstant: NSObject {
     
     static let baseURL = "http://52.63.247.85/mastermyproject/restapi/" //Live

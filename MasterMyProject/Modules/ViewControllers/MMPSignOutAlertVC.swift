@@ -17,6 +17,9 @@ class MMPSignOutAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
         // Do any additional setup after loading the view.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.dismiss(animated: true)
+    }
     @IBAction func okButtonAction(_ sender: UIButton) {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
             vc.delegate = self

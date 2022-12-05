@@ -9,6 +9,11 @@ import UIKit
 
 class MMPProfileVC: MMPBaseVC {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var compnyNameLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    
+    var workerDetails = [String:AnyObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
@@ -16,6 +21,10 @@ class MMPProfileVC: MMPBaseVC {
          navigationController?.isNavigationBarHidden = false
         navigationItem.backButtonTitle = ""
         // Do any additional setup after loading the view.
+        guard let name = workerDetails["name"], let comanyName = workerDetails["email"], let id = workerDetails["company_id"] else {return}
+        self.nameLabel.text = name as? String
+        self.compnyNameLabel.text = comanyName as? String
+        self.idLabel.text = "Emp ID : \(id)"
     }
     
     @IBAction func backButtonAction(_ sender: UIBarButtonItem) {
