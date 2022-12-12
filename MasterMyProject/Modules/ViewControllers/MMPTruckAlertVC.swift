@@ -6,10 +6,14 @@
 //
 
 import UIKit
-
+protocol SelectTruckActionControllerDelegate {
+    func truckViewDismissed()
+}
 class MMPTruckAlertVC: UIViewController {
     @IBOutlet weak var alertTitleLabel: UILabel!
     @IBOutlet weak var alertImage: UIImageView!
+    var projectId: String?
+    var delegate: SelectTruckActionControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
@@ -17,15 +21,20 @@ class MMPTruckAlertVC: UIViewController {
     }
     
     @IBAction func yesButtonAction(_ sender: UIButton) {
-       // self.dismiss(animated: true)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
-        // vc.delegate = self
-        self.navigationController?.pushViewController(vc, animated: true)
+//       // self.dismiss(animated: true)
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
+//        // vc.delegate = self
+//        self.navigationController?.pushViewController(vc, animated: true)
+        dismiss(animated: true) {
+            self.delegate?.truckViewDismissed()
+        }
+
     }
     
     @IBAction func noButtonAction(_ sender: UIButton) {
         self.dismiss(animated: true)
     }
+    
     /*
     // MARK: - Navigation
 

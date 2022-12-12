@@ -6,13 +6,16 @@
 //
 
 import UIKit
-
+protocol SelectActionControllerDelegate {
+    func machineViewDismissed()
+}
 class MMPAlertVC: MMPBaseVC {
     @IBOutlet weak var alertTitleLabel: UILabel!
     @IBOutlet weak var alertImage: UIImageView!
     var titleString : String?
     var imageString : String?
     var projectId: String?
+    var delegate: SelectActionControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -20,31 +23,34 @@ class MMPAlertVC: MMPBaseVC {
         navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.dismiss(animated: true)
     }
+    
     @IBAction func yesButtonAction(_ sender: UIButton) {
-//        self.dismiss(animated: true)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 ) {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartOneVC") as! MMPPrestartOneVC
-             vc.projectId = projectId
-            self.navigationController?.pushViewController(vc, animated: true)
-       // }
+        dismiss(animated: true) {
+            self.delegate?.machineViewDismissed()
+        }
     }
     
     @IBAction func noButtonAction(_ sender: UIButton) {
-//        self.dismiss(animated: true, completion: {
-//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
-//            vc.modalTransitionStyle = .crossDissolve
-//            vc.modalPresentationStyle = .overCurrentContext
-//            self.getTopMostViewController()?.present(vc, animated: true)
-//        })
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
-        // vc.delegate = self
-        vc.projectId = projectId
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-        //self.present(vc, animated: true)
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
+//        let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+//        navController.modalTransitionStyle = .crossDissolve
+//        navController.modalPresentationStyle = .overCurrentContext
+//        vc.delegate = self
+//        //vc.titleString = "Are you operating Machine?"
+//        //vc.imageString = "machine"
+//        vc.projectId = projectId
+//        self.present(navController, animated: true)
+        self.dismiss(animated: true, completion: {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overCurrentContext
+            self.getTopMostViewController()?.present(vc, animated: true)
+        })
+
     }
     /*
     // MARK: - Navigation
@@ -56,4 +62,12 @@ class MMPAlertVC: MMPBaseVC {
     }
     */
 
+}
+
+extension MMPAlertVC : SelectTruckActionControllerDelegate {
+    func truckViewDismissed() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
+        vc.projectId = projectId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

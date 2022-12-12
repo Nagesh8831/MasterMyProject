@@ -105,7 +105,16 @@ class MMPWorkerSignInVC: MMPBaseVC {
     
     @IBAction func projectSignInAction(_ sender: Any) {
        // projectSignIn()
-        self.showAlerViewController("Are you operating Machine?", imageName: "machine", projectId: projectId ?? "")
+       // self.showAlerViewController("Are you operating Machine?", imageName: "machine", projectId: projectId ?? "")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPAlertVC") as!MMPAlertVC
+        let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+        navController.modalTransitionStyle = .crossDissolve
+        navController.modalPresentationStyle = .overCurrentContext
+        vc.delegate = self
+        vc.titleString = "Are you operating Machine?"
+        vc.imageString = "machine"
+        vc.projectId = projectId
+        self.present(navController, animated: true)
         
     }
     /*
@@ -118,6 +127,20 @@ class MMPWorkerSignInVC: MMPBaseVC {
     }
     */
 
+}
+
+extension MMPWorkerSignInVC: SelectActionControllerDelegate, SelectTruckActionControllerDelegate {
+    func machineViewDismissed() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartOneVC") as! MMPPrestartOneVC
+         vc.projectId = projectId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func truckViewDismissed() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
+        vc.projectId = projectId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension MMPWorkerSignInVC {
@@ -225,8 +248,8 @@ extension MMPWorkerSignInVC : CLLocationManagerDelegate {
                         print("state:",    placemark.administrativeArea ?? "")
                         print("zip code:", placemark.postalCode ?? "")
                         print("country:",  placemark.country ?? "")*/
-                      //  self.workerLocationLabel.text = "\(placemark.thoroughfare ?? ""), \(placemark.locality ?? ""), \(placemark.country ?? "")"
-                        self.workerLocationLabel.text = "\(placemark.locality ?? ""), \(placemark.administrativeArea ?? ""), \(placemark.country ?? "")"
+                       self.workerLocationLabel.text = "\(placemark.thoroughfare ?? ""), \(placemark.locality ?? ""), \(placemark.country ?? "")"
+                      //  self.workerLocationLabel.text = "\(placemark.locality ?? ""), \(placemark.administrativeArea ?? ""), \(placemark.country ?? "")"
                     }
                 }
             }
