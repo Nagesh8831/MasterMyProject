@@ -8,6 +8,7 @@
 import UIKit
 protocol SelectActionControllerDelegate {
     func machineViewDismissed()
+    func truckViewDismissed()
 }
 class MMPAlertVC: MMPBaseVC {
     @IBOutlet weak var alertTitleLabel: UILabel!
@@ -35,6 +36,9 @@ class MMPAlertVC: MMPBaseVC {
     }
     
     @IBAction func noButtonAction(_ sender: UIButton) {
+        dismiss(animated: true) {
+            self.delegate?.truckViewDismissed()
+        }
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
 //        let navController = UINavigationController(rootViewController: vc) //Add navigation controller
 //        navController.modalTransitionStyle = .crossDissolve
@@ -44,12 +48,12 @@ class MMPAlertVC: MMPBaseVC {
 //        //vc.imageString = "machine"
 //        vc.projectId = projectId
 //        self.present(navController, animated: true)
-        self.dismiss(animated: true, completion: {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .overCurrentContext
-            self.getTopMostViewController()?.present(vc, animated: true)
-        })
+//        self.dismiss(animated: true, completion: {
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
+//            vc.modalTransitionStyle = .crossDissolve
+//            vc.modalPresentationStyle = .overCurrentContext
+//            self.getTopMostViewController()?.present(vc, animated: true)
+//        })
 
     }
     /*
@@ -64,10 +68,10 @@ class MMPAlertVC: MMPBaseVC {
 
 }
 
-extension MMPAlertVC : SelectTruckActionControllerDelegate {
-    func truckViewDismissed() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
-        vc.projectId = projectId
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
+//extension MMPAlertVC : SelectTruckActionControllerDelegate {
+//    func truckViewDismissed() {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
+//        vc.projectId = projectId
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
+//}

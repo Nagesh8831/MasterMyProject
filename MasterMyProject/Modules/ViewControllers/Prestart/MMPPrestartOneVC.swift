@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+
 class MMPPrestartOneVC: MMPBaseVC {
 
     @IBOutlet weak var prestartOneTableView: UITableView!
@@ -16,6 +17,9 @@ class MMPPrestartOneVC: MMPBaseVC {
     var plantListArray = [[String:AnyObject]]()
     var prestartListArray = [[String:AnyObject]]()
     var prestartTwoListArray = [[String:AnyObject]]()
+    var fluidLevelsArray = [[String:AnyObject]]()
+    var fluidLevelsDict = [String:AnyObject]()
+    var machineListMode : MMPMachinePrestartListModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
@@ -37,6 +41,7 @@ class MMPPrestartOneVC: MMPBaseVC {
     @IBAction func nextButtonAction(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartTwoVC") as! MMPPrestartTwoVC
         vc.prestartTwoListArray = prestartTwoListArray
+        vc.fluidLevelsSelectedArray = fluidLevelsArray
         self.navigationController?.pushViewController(vc, animated: true)
     }
     /*
@@ -94,7 +99,7 @@ extension MMPPrestartOneVC {
             JSONEncoding.default, headers: headers).responseJSON { response in
                 switch response.result {
                 case .success(let value):
-                   // print("checklist_response",response)
+                  // print("checklist_response",response)
                     self.stopLoading()
                     self.prestartOneTableView.reloadData()
                     if let projectJSON = value as? [String: Any] {
@@ -109,13 +114,34 @@ extension MMPPrestartOneVC {
                             self.prestartOneTableView.reloadData()
                         }
                     }
-                case .failure(let error):
-                    print(error)
-                    self.stopLoading()
-                    DispatchQueue.main.async {
-                        //self.present(alert, animated: true, completion: nil)
+                    
+//                    if let data = response.data {
+//                        do {
+//                           let wrapper = try JSONDecoder().decode(machineListMode.self, from: data)
+//                           print(wrapper.all)
+//                        } catch {
+//                           print("Decoding error \(error.localizedDescription)")
+//                        }
+//                    }
+                    
+                  /*  if let data = response.data {
+                       do {
+                            let decoder = JSONDecoder()
+                            decoder.keyDecodingStrategy = .convertFromSnakeCase
+                            let result = try decoder.decode(MMPMachinePrestartListModel.self, from: data)
+                            print(result)
+                          // machineListMode?.resultObject.in
+                        } catch { print(error) }
+                    }*/
+                        
+                        
+                    case .failure(let error):
+                        print(error)
+                        self.stopLoading()
+                        DispatchQueue.main.async {
+                            //self.present(alert, animated: true, completion: nil)
+                        }
                     }
-                }
         }
     }
 }

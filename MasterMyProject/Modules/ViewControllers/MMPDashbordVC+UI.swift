@@ -40,11 +40,13 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
                  cell.actionButton.alpha = 1.0
            } else if projectStatus == "signed_in" {
                 cell.actionButton.setTitle("Sign In", for: .normal)
-                cell.actionButton.tintColor = MMPConstant.redColor
+               // cell.actionButton.tintColor = MMPConstant.redColor
+               cell.actionButton.tintColor = MMPConstant.blueColor
                cell.actionButton.alpha = 1.0
             } else if projectStatus == "signed_out" {
                 cell.actionButton.setTitle("Sign In", for: .normal)
-                cell.actionButton.tintColor = MMPConstant.redColor
+               // cell.actionButton.tintColor = MMPConstant.redColor
+                cell.actionButton.tintColor = MMPConstant.blueColor
                // cell.actionButton.isUserInteractionEnabled = false
                 cell.actionButton.alpha = 0.3
             }

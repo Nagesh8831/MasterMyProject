@@ -1,14 +1,13 @@
 //
-//  MMPSignOutAlertVC.swift
+//  MMPSignInSucessAlertVC.swift
 //  MasterMyProject
 //
-//  Created by Nagesh on 13/10/22.
+//  Created by Mac on 12/12/22.
 //
 
 import UIKit
 
-
-class MMPSignOutAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
+class MMPSignInSucessAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +15,6 @@ class MMPSignOutAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
         addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         // Do any additional setup after loading the view.
     }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.dismiss(animated: true)
     }
@@ -26,7 +24,7 @@ class MMPSignOutAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
     }
-    
+
     func removeTopChildViewController() {
         //DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 ) {
             self.dismiss(animated: false)

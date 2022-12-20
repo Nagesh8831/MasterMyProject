@@ -29,7 +29,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="i9L-Tr-57R">
                         <rect key="frame" x="16" y="45" width="288" height="40"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qy-JM-uCc" customClass="MMPButton" customModule="MasterMyProject" customModuleProvider="target">
+                            <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qy-JM-uCc" customClass="MMPButton" customModule="MasterMyProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="134" height="40"/>
                                 <color key="tintColor" red="0.019607843140000001" green="0.56078431370000004" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
@@ -45,8 +45,11 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="yesButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aVt-ee-uc8"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7Y-dn-G9p" customClass="MMPButton" customModule="MasterMyProject" customModuleProvider="target">
+                            <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7Y-dn-G9p" customClass="MMPButton" customModule="MasterMyProject" customModuleProvider="target">
                                 <rect key="frame" x="154" y="0.0" width="134" height="40"/>
                                 <color key="tintColor" red="0.89019607840000003" green="0.30588235289999999" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
@@ -62,6 +65,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="noButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1TT-kl-4A3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>

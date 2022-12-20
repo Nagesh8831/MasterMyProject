@@ -104,6 +104,7 @@ class MMPWorkerSignInVC: MMPBaseVC {
         }
     
     @IBAction func projectSignInAction(_ sender: Any) {
+     //   guard validateData() else { return }
        // projectSignIn()
        // self.showAlerViewController("Are you operating Machine?", imageName: "machine", projectId: projectId ?? "")
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPAlertVC") as!MMPAlertVC
@@ -129,7 +130,7 @@ class MMPWorkerSignInVC: MMPBaseVC {
 
 }
 
-extension MMPWorkerSignInVC: SelectActionControllerDelegate, SelectTruckActionControllerDelegate {
+extension MMPWorkerSignInVC: SelectActionControllerDelegate {
     func machineViewDismissed() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartOneVC") as! MMPPrestartOneVC
          vc.projectId = projectId

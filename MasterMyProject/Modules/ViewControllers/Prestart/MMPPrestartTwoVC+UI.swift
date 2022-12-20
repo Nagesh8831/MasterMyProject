@@ -27,6 +27,10 @@ extension MMPPrestartTwoVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MMPPrestartTableViewCell", for: indexPath) as! MMPPrestartTableViewCell
         cell.titleLabel.text = prestartTwoListArray[indexPath.row]["title"] as? String
+        cell.yesButton.tag = indexPath.row
+        cell.noButton.tag = indexPath.row
+        cell.yesButton.addTarget(self, action: #selector(yesButtonTapped), for: .touchUpInside)
+        cell.noButton.addTarget(self, action: #selector(noButtonTapped), for: .touchUpInside)
         return cell
     }
     
@@ -34,4 +38,43 @@ extension MMPPrestartTwoVC: UITableViewDelegate,UITableViewDataSource {
         return 95.0
     }
     
+    @objc func yesButtonTapped(_ sender : UIButton) {
+        if inspectionListSelectedArray.count != 0 {
+            for data in inspectionListSelectedArray {
+                if prestartTwoListArray[sender.tag]["id"] as? String == data["id"] as? String {
+                    inspectionListSelectedArray.remove(at: sender.tag)
+                    inspectionListDict.removeValue(forKey: "ans")
+                } else {
+                    inspectionListDict = prestartTwoListArray[sender.tag]
+                    inspectionListDict["ans"] = "Yes" as AnyObject
+                }
+            }
+        }
+       
+        inspectionListDict = prestartTwoListArray[sender.tag]
+        inspectionListDict["ans"] = "Yes" as AnyObject
+        inspectionListSelectedArray.append(inspectionListDict)
+        
+        print("inspectionListSelectedArray from Yes",inspectionListSelectedArray)
+    }
+    
+    @objc func noButtonTapped(_ sender : UIButton) {
+        if inspectionListSelectedArray.count != 0 {
+            for data in inspectionListSelectedArray {
+                if prestartTwoListArray[sender.tag]["id"] as? String == data["id"] as? String {
+                    inspectionListSelectedArray.remove(at: sender.tag)
+                    inspectionListDict.removeValue(forKey: "ans")
+                } else {
+                    inspectionListDict = prestartTwoListArray[sender.tag]
+                    inspectionListDict["ans"] = "Yes" as AnyObject
+                }
+            }
+        }
+       
+        inspectionListDict = prestartTwoListArray[sender.tag]
+        inspectionListDict["ans"] = "Yes" as AnyObject
+        inspectionListSelectedArray.append(inspectionListDict)
+        
+        print("inspectionListSelectedArray from No",inspectionListSelectedArray)
+    }
 }

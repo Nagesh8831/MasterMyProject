@@ -16,6 +16,7 @@ class MMPTruckPrestartOneVC: MMPBaseVC {
     var categoryBArray = [[String:AnyObject]]()
     var categoryCArray = [[String:AnyObject]]()
     var plantListArray = [[String:AnyObject]]()
+    var isFromPrestart = false
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Prestart(1/3)"
@@ -23,11 +24,13 @@ class MMPTruckPrestartOneVC: MMPBaseVC {
         navigationController?.isNavigationBarHidden = false
         addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         // Do any additional setup after loading the view.
+            showTruckAlert()
     }
     override func viewWillAppear(_ animated: Bool) {
         getPlantsList()
         getPrestartCheckList()
     }
+    
     @IBAction func backButtonAction(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -38,7 +41,15 @@ class MMPTruckPrestartOneVC: MMPBaseVC {
         vc.categoryCArray = categoryCArray
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
+    func showTruckAlert(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
+        let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+        vc.isFromPrestart = isFromPrestart
+        navController.modalTransitionStyle = .crossDissolve
+        navController.modalPresentationStyle = .overCurrentContext
+        self.present(navController, animated: true)
+    }
     /*
     // MARK: - Navigation
 

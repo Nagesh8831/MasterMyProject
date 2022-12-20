@@ -21,6 +21,11 @@ class MMPDocketTwoVC: MMPBaseVC {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func sendButtonAction(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

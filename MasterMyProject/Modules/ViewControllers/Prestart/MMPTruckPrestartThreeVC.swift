@@ -24,7 +24,7 @@ class MMPTruckPrestartThreeVC: MMPBaseVC {
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignInSucessAlertVC") as!MMPSignInSucessAlertVC
         let navController = UINavigationController(rootViewController: vc) //Add navigation controller
         navController.modalTransitionStyle = .crossDissolve
         navController.modalPresentationStyle = .overCurrentContext
