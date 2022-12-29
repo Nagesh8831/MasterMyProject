@@ -39,10 +39,14 @@ class MMPPrestartOneVC: MMPBaseVC {
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
+        if prestartListArray.count == fluidLevelsArray.count {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartTwoVC") as! MMPPrestartTwoVC
         vc.prestartTwoListArray = prestartTwoListArray
         vc.fluidLevelsSelectedArray = fluidLevelsArray
         self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            alertUser("Error", message: "Please select correct answers for all questions")
+        }
     }
     /*
     // MARK: - Navigation

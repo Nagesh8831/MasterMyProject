@@ -33,9 +33,14 @@ class MMPPrestartTwoVC: MMPBaseVC {
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
-        vc.isFromPrestart = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        if prestartTwoListArray.count == inspectionListSelectedArray.count {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
+            vc.isFromPrestart = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            alertUser("Error", message: "Please select correct answers for all questions")
+        }
+        
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
 //        vc.modalTransitionStyle = .crossDissolve
 //        vc.modalPresentationStyle = .overCurrentContext

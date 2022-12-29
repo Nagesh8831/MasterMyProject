@@ -16,6 +16,27 @@ class MMPPrestartTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+//    override func prepareForReuse() {
+//            // invoke superclass implementation
+//            super.prepareForReuse()
+//            
+//            // reset (hide) the checkmark label
+//        yesButton.backgroundColor = .clear
+//        yesButton.tintColor = MMPConstant.greenColor
+//        noButton.backgroundColor = .clear
+//        noButton.tintColor = MMPConstant.redColor
+//
+//        }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        yesButton.backgroundColor = .clear
+        yesButton.tintColor = MMPConstant.greenColor
+        noButton.backgroundColor = .clear
+        noButton.tintColor = MMPConstant.redColor
+    }
+    
     var toggle: Bool? {
               didSet {
                      //Do buttons operations like...

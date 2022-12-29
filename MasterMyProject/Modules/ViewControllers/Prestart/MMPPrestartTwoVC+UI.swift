@@ -31,6 +31,21 @@ extension MMPPrestartTwoVC: UITableViewDelegate,UITableViewDataSource {
         cell.noButton.tag = indexPath.row
         cell.yesButton.addTarget(self, action: #selector(yesButtonTapped), for: .touchUpInside)
         cell.noButton.addTarget(self, action: #selector(noButtonTapped), for: .touchUpInside)
+        for data in inspectionListSelectedArray {
+            if (prestartTwoListArray[indexPath.row]["id"] as? String == data["id"] as? String  && data["ans"] as? String == "Yes") {
+                cell.yesButton.backgroundColor = MMPConstant.greenColor
+                cell.yesButton.tintColor = .white
+            } else if (prestartTwoListArray[indexPath.row]["id"] as? String == data["id"] as? String  && data["ans"] as? String == "No") {
+                cell.noButton.backgroundColor = MMPConstant.redColor
+                cell.noButton.tintColor = .white
+        }
+        }
+//        } else {
+//            cell.yesButton.backgroundColor = .clear
+//            cell.yesButton.tintColor = MMPConstant.greenColor
+//            cell.noButton.backgroundColor = .clear
+//            cell.noButton.tintColor = MMPConstant.redColor
+//        }
         return cell
     }
     
@@ -54,7 +69,7 @@ extension MMPPrestartTwoVC: UITableViewDelegate,UITableViewDataSource {
         inspectionListDict = prestartTwoListArray[sender.tag]
         inspectionListDict["ans"] = "Yes" as AnyObject
         inspectionListSelectedArray.append(inspectionListDict)
-        
+        prestartTwoTableView.reloadData()
         print("inspectionListSelectedArray from Yes",inspectionListSelectedArray)
     }
     
@@ -66,15 +81,15 @@ extension MMPPrestartTwoVC: UITableViewDelegate,UITableViewDataSource {
                     inspectionListDict.removeValue(forKey: "ans")
                 } else {
                     inspectionListDict = prestartTwoListArray[sender.tag]
-                    inspectionListDict["ans"] = "Yes" as AnyObject
+                    inspectionListDict["ans"] = "No" as AnyObject
                 }
             }
         }
        
         inspectionListDict = prestartTwoListArray[sender.tag]
-        inspectionListDict["ans"] = "Yes" as AnyObject
+        inspectionListDict["ans"] = "No" as AnyObject
         inspectionListSelectedArray.append(inspectionListDict)
-        
+        prestartTwoTableView.reloadData()
         print("inspectionListSelectedArray from No",inspectionListSelectedArray)
     }
 }
