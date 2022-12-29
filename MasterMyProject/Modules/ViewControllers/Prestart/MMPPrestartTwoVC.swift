@@ -8,13 +8,16 @@
 import UIKit
 import Alamofire
 class MMPPrestartTwoVC: MMPBaseVC {
+    
+    
    // @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var prestartTwoTableView: UITableView!
-    var projectId: String?
+    var projectId = ""
     var prestartTwoListArray = [[String:AnyObject]]()
     var fluidLevelsSelectedArray = [[String:AnyObject]]()
     var inspectionListSelectedArray = [[String:AnyObject]]()
     var inspectionListDict = [String:AnyObject]()
+    var plant_id = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Prestart(2/2)"
@@ -34,9 +37,7 @@ class MMPPrestartTwoVC: MMPBaseVC {
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
         if prestartTwoListArray.count == inspectionListSelectedArray.count {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
-            vc.isFromPrestart = true
-            self.navigationController?.pushViewController(vc, animated: true)
+            addPrestart()
         } else {
             alertUser("Error", message: "Please select correct answers for all questions")
         }
@@ -61,19 +62,23 @@ class MMPPrestartTwoVC: MMPBaseVC {
 extension MMPPrestartTwoVC {
     func addPrestart() {
        // guard validateData() else { return }
-        let parameters = ["pro_id": "1",
+        let parameters = ["pro_id": projectId,
                           "plant_type_id": "1",
+                          "plant_id": plant_id,
                           "datetime":"2022-12-11 12:50:00",
-                          "Fluid Levels": [],
-                          "Inspection List": []
-        ] as [String : Any]
+                          "Fluid Levels": fluidLevelsSelectedArray,
+                          "Inspection List": inspectionListSelectedArray
+        ] as? [String : AnyObject]
         startLoading()
         print(parameters)
- 
-        let urlRequest = String (format: "%@%@%@", MMPConstant.baseURL,MMPConstant.ADD_MACHINE_PRESTART)
+        let token = UserDefaults.standard.string(forKey: "userToken")
+        let headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
+                                      "Content-Type": "application/json"]
+        //let urlRequest = String (format: "%@%@%@", MMPConstant.baseURL,MMPConstant.ADD_MACHINE_PRESTART)
+        let urlRequest = "http://52.63.247.85/mastermyproject/restapi/projects/addprestart"
         print(urlRequest)
         AF.request( urlRequest,method: .post ,parameters: parameters,encoding:
-                        JSONEncoding.default, headers: nil)
+                        JSONEncoding.default, headers: headers)
         .responseJSON { response in
             switch response.result {
             case .success(let value):
@@ -82,15 +87,20 @@ extension MMPPrestartTwoVC {
                 if let loginJSON = value as? [String: Any] {
                     if let statusCode = loginJSON["status_code"] as? Int,let meesage = loginJSON["message"] as? String{
                         print(statusCode)
-                        if statusCode == 200 {
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
-                            if let resultObject = loginJSON["result_object"] as? [String: Any], let token = resultObject["token"] as? String, let id = resultObject["id"] as? String {
-                                UserDefaults.standard.set(token, forKey: "userToken")
-                                UserDefaults.standard.set(id, forKey: "userId")
-                                UserDefaults.standard.set(true, forKey: "isLogin")
-                                UserDefaults.standard.synchronize()
-                            }
-                            self.navigationController?.pushViewController(vc, animated: true)
+                        if statusCode == 201 {
+//                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
+//                            vc.isFromPrestart = true
+//                            self.navigationController?.pushViewController(vc, animated: true)
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPAlertVC") as!MMPAlertVC
+                            let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+                            navController.modalTransitionStyle = .crossDissolve
+                            navController.modalPresentationStyle = .overCurrentContext
+                            vc.delegate = self
+                            vc.titleString = "Are you operating Machine?"
+                            vc.imageString = "machine"
+                            vc.projectId = self.projectId
+                            vc.isFromPrestartTwo = true
+                            self.present(navController, animated: true)
                         } else if statusCode == 403 {
                             self.alertUser("Error", message: meesage)
                         }
@@ -104,5 +114,19 @@ extension MMPPrestartTwoVC {
                 }
             }
         }
+    }
+}
+
+extension MMPPrestartTwoVC : SelectActionControllerDelegate {
+    func machineViewDismissed() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartOneVC") as! MMPPrestartOneVC
+         vc.projectId = projectId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func truckViewDismissed() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartOneVC") as! MMPTruckPrestartOneVC
+        vc.projectId = projectId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

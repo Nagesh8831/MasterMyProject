@@ -20,7 +20,7 @@ class MMPWorkerSignInVC: MMPBaseVC {
     @IBOutlet weak var noGoAhedButton: UIButton!
     @IBOutlet weak var yesAffectedButton: UIButton!
     @IBOutlet weak var noAffectedButton: UIButton!
-    var projectId: String?
+    var projectId = ""
     var statusPPE = ""
     var onSiteStatus = ""
     var goAheadStatus = ""
@@ -115,6 +115,7 @@ class MMPWorkerSignInVC: MMPBaseVC {
         vc.titleString = "Are you operating Machine?"
         vc.imageString = "machine"
         vc.projectId = projectId
+        vc.isFromPrestartTwo = false
         self.present(navController, animated: true)
         
     }

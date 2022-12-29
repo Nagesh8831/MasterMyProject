@@ -69,7 +69,7 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
         if let projectStatus = projectArray[sender.tag]["sign_in_flag"] as? String {
             if projectStatus == "signed_in" {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPWorkerSignInVC") as! MMPWorkerSignInVC
-                vc.projectId = projectArray[sender.tag]["id"] as? String
+                vc.projectId = projectArray[sender.tag]["id"] as? String ?? ""
                 self.navigationController?.pushViewController(vc, animated: true)
           } else if projectStatus == "signed_in" {
               let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC

@@ -16,6 +16,7 @@ class MMPAlertVC: MMPBaseVC {
     var titleString : String?
     var imageString : String?
     var projectId: String?
+    var isFromPrestartTwo = false
     var delegate: SelectActionControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class MMPAlertVC: MMPBaseVC {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss(animated: true)
+     //   self.dismiss(animated: true)
     }
     
     @IBAction func yesButtonAction(_ sender: UIButton) {

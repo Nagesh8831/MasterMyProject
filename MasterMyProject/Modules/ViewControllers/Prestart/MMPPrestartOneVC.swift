@@ -12,8 +12,9 @@ class MMPPrestartOneVC: MMPBaseVC {
 
     @IBOutlet weak var prestartOneTableView: UITableView!
     @IBOutlet weak var selectTextField: UITextField!
-    var projectId: String?
+    var projectId = ""
     var plantTypeId = "1"
+    var plant_id = ""
     var plantListArray = [[String:AnyObject]]()
     var prestartListArray = [[String:AnyObject]]()
     var prestartTwoListArray = [[String:AnyObject]]()
@@ -43,6 +44,8 @@ class MMPPrestartOneVC: MMPBaseVC {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartTwoVC") as! MMPPrestartTwoVC
         vc.prestartTwoListArray = prestartTwoListArray
         vc.fluidLevelsSelectedArray = fluidLevelsArray
+        vc.plant_id = self.plant_id
+        vc.projectId = self.projectId
         self.navigationController?.pushViewController(vc, animated: true)
         } else {
             alertUser("Error", message: "Please select correct answers for all questions")
@@ -180,5 +183,6 @@ extension MMPPrestartOneVC : UIPickerViewDataSource {
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectTextField.text = plantListArray[row]["plant_name"] as? String
+        plant_id = plantListArray[row]["id"] as? String ?? ""
     }
 }
