@@ -8,8 +8,7 @@
 import UIKit
 import Alamofire
 class MMPPrestartTwoVC: MMPBaseVC {
-    
-    
+
    // @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var prestartTwoTableView: UITableView!
     var projectId = ""
@@ -41,12 +40,6 @@ class MMPPrestartTwoVC: MMPBaseVC {
         } else {
             alertUser("Error", message: "Please select correct answers for all questions")
         }
-        
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
-//        vc.modalTransitionStyle = .crossDissolve
-//        vc.modalPresentationStyle = .overCurrentContext
-//        self.present(vc, animated: true)
-        //self.getTopMostViewController()?.present(vc, animated: true)
     }
     /*
     // MARK: - Navigation
@@ -61,7 +54,7 @@ class MMPPrestartTwoVC: MMPBaseVC {
 }
 extension MMPPrestartTwoVC {
     func addPrestart() {
-       // guard validateData() else { return }
+      //  guard validateData() else { return }
         let parameters = ["pro_id": projectId,
                           "plant_type_id": "1",
                           "plant_id": plant_id,

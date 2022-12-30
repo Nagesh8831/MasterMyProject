@@ -40,6 +40,11 @@ class MMPPrestartOneVC: MMPBaseVC {
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
+        if !MMPUtilities.valiadateBlankText(text: selectTextField.text) {
+            alertUser("Master My Project", message: "Please select machine type ")
+            return
+        }
+        
         if prestartListArray.count == fluidLevelsArray.count {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPPrestartTwoVC") as! MMPPrestartTwoVC
         vc.prestartTwoListArray = prestartTwoListArray

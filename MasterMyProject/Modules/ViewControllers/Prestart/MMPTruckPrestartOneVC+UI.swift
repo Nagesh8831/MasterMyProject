@@ -25,6 +25,19 @@ extension MMPTruckPrestartOneVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MMPPrestartTableViewCell", for: indexPath) as! MMPPrestartTableViewCell
         cell.titleLabel.text = categoryAArray[indexPath.row]["title"] as? String
+        cell.yesButton.tag = indexPath.row
+        cell.noButton.tag = indexPath.row
+        cell.yesButton.addTarget(self, action: #selector(yesButtonTapped), for: .touchUpInside)
+        cell.noButton.addTarget(self, action: #selector(noButtonTapped), for: .touchUpInside)
+        for data in categoryASelectedArray {
+            if (categoryAArray[indexPath.row]["id"] as? String == data["id"] as? String  && data["ans"] as? String == "Yes") {
+                cell.yesButton.backgroundColor = MMPConstant.greenColor
+                cell.yesButton.tintColor = .white
+            } else if (categoryAArray[indexPath.row]["id"] as? String == data["id"] as? String  && data["ans"] as? String == "No") {
+                cell.noButton.backgroundColor = MMPConstant.redColor
+                cell.noButton.tintColor = .white
+            }
+        }
         return cell
     }
     
@@ -32,4 +45,46 @@ extension MMPTruckPrestartOneVC: UITableViewDelegate,UITableViewDataSource {
         return 95.0
     }
     
+    @objc func yesButtonTapped(_ sender : UIButton) {
+        if categoryASelectedArray.count != 0 {
+            for data in categoryASelectedArray {
+                if categoryAArray[sender.tag]["id"] as? String == data["id"] as? String {
+                    categoryASelectedArray.remove(at: sender.tag)
+                    categoryADict.removeValue(forKey: "ans")
+                } else {
+                    categoryADict = categoryAArray[sender.tag]
+                    categoryADict["ans"] = "Yes" as AnyObject
+                }
+            }
+        }
+       
+        categoryADict = categoryAArray[sender.tag]
+        categoryADict["ans"] = "Yes" as AnyObject
+        categoryASelectedArray.append(categoryADict)
+        
+        print("categoryASelectedArray from Yes",categoryASelectedArray)
+    }
+    
+    @objc func noButtonTapped(_ sender : UIButton) {
+        
+        if categoryASelectedArray.count != 0 {
+            for data in categoryASelectedArray {
+                if categoryAArray[sender.tag]["id"] as? String == data["id"] as? String {
+                    categoryASelectedArray.remove(at: sender.tag)
+                    categoryADict.removeValue(forKey: "ans")
+                } else {
+                    categoryADict = categoryAArray[sender.tag]
+                    categoryADict["ans"] = "No" as AnyObject
+                }
+            }
+        }
+        
+            categoryADict = categoryAArray[sender.tag]
+            categoryADict["ans"] = "No" as AnyObject
+
+        categoryASelectedArray.append(categoryADict)
+
+        print("categoryASelectedArray from no",categoryASelectedArray)
+        
+    }
 }

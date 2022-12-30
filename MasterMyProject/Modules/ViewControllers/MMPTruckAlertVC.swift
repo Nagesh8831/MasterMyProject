@@ -41,8 +41,14 @@ class MMPTruckAlertVC: MMPBaseVC {
     }
     
     @IBAction func noButtonAction(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
+//        self.navigationController?.pushViewController(vc, animated: true)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignInSucessAlertVC") as!MMPSignInSucessAlertVC
+                let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+                navController.modalTransitionStyle = .crossDissolve
+                navController.modalPresentationStyle = .overCurrentContext
+                self.present(navController, animated: true, completion: nil)
+        
     }
     
     /*

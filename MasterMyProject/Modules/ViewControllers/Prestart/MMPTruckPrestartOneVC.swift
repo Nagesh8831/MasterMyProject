@@ -10,12 +10,15 @@ import Alamofire
 class MMPTruckPrestartOneVC: MMPBaseVC {
     @IBOutlet weak var prestartOneTableView: UITableView!
     @IBOutlet weak var selectTextField: UITextField!
-    var projectId: String?
+    var projectId = ""
     var plantTypeId = "2"
+    var plant_id = ""
     var categoryAArray = [[String:AnyObject]]()
     var categoryBArray = [[String:AnyObject]]()
     var categoryCArray = [[String:AnyObject]]()
     var plantListArray = [[String:AnyObject]]()
+    var categoryASelectedArray = [[String:AnyObject]]()
+    var categoryADict = [String:AnyObject]()
     var isFromPrestart = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,7 @@ class MMPTruckPrestartOneVC: MMPBaseVC {
         // Do any additional setup after loading the view.
             showTruckAlert()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         getPlantsList()
         getPrestartCheckList()
@@ -39,6 +43,9 @@ class MMPTruckPrestartOneVC: MMPBaseVC {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartTwoVC") as! MMPTruckPrestartTwoVC
         vc.categoryBArray = categoryBArray
         vc.categoryCArray = categoryCArray
+        vc.categoryASelectedArray = self.categoryASelectedArray
+        vc.projectId = self.projectId
+        vc.plant_id = self.plant_id
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -164,5 +171,6 @@ extension MMPTruckPrestartOneVC : UIPickerViewDataSource {
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectTextField.text = plantListArray[row]["plant_name"] as? String
+        self.plant_id = plantListArray[row]["id"] as? String ?? ""
     }
 }
