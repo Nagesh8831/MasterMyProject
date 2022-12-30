@@ -29,6 +29,7 @@ class MMPTruckPrestartTwoVC: MMPBaseVC {
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
+        if categoryBArray.count == categoryBSelectedArray.count {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartThreeVC") as! MMPTruckPrestartThreeVC
         vc.categoryCArray = categoryCArray
         vc.categoryASelectedArray = self.categoryASelectedArray
@@ -36,6 +37,9 @@ class MMPTruckPrestartTwoVC: MMPBaseVC {
         vc.projectId = self.projectId
         vc.plant_id = self.plant_id
         self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            alertUser("Error", message: "Please select correct answers for all questions")
+        }
     }
 
     /*

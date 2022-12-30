@@ -17,13 +17,15 @@ class MMPSignInSucessAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss(animated: true)
+        //self.dismiss(animated: true)
     }
     
     @IBAction func okButtonAction(_ sender: UIButton) {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
-            vc.delegate = self
-            self.navigationController?.pushViewController(vc, animated: true)
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
+//            vc.delegate = self
+//            self.navigationController?.pushViewController(vc, animated: true)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
+                self.navigationController?.pushViewController(vc, animated: true)
     }
 
     func removeTopChildViewController() {

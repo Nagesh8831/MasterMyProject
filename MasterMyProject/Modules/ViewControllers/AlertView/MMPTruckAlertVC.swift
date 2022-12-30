@@ -48,7 +48,6 @@ class MMPTruckAlertVC: MMPBaseVC {
                 navController.modalTransitionStyle = .crossDissolve
                 navController.modalPresentationStyle = .overCurrentContext
                 self.present(navController, animated: true, completion: nil)
-        
     }
     
     /*

@@ -40,6 +40,11 @@ class MMPTruckPrestartOneVC: MMPBaseVC {
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
+        if !MMPUtilities.valiadateBlankText(text: selectTextField.text) {
+            alertUser("Master My Project", message: "Please select machine type ")
+            return
+        }
+        if categoryAArray.count == categoryASelectedArray.count {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckPrestartTwoVC") as! MMPTruckPrestartTwoVC
         vc.categoryBArray = categoryBArray
         vc.categoryCArray = categoryCArray
@@ -47,6 +52,9 @@ class MMPTruckPrestartOneVC: MMPBaseVC {
         vc.projectId = self.projectId
         vc.plant_id = self.plant_id
         self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            alertUser("Error", message: "Please select correct answers for all questions")
+        }
     }
     
     func showTruckAlert(){
