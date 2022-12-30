@@ -12,6 +12,7 @@ class MMPProfileVC: MMPBaseVC {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var compnyNameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var profileView: UIView!
     
     var workerDetails = [String:AnyObject]()
     override func viewDidLoad() {
@@ -25,6 +26,11 @@ class MMPProfileVC: MMPBaseVC {
         self.nameLabel.text = name as? String
         self.compnyNameLabel.text = comanyName as? String
         self.idLabel.text = "Emp ID : \(id)"
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.dismiss(animated: true)
     }
     
     @IBAction func backButtonAction(_ sender: UIBarButtonItem) {

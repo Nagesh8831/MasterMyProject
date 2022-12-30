@@ -36,7 +36,10 @@ class MMPDashbordVC: MMPBaseVC {
     @IBAction func profileButtonAction(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPProfileVC") as! MMPProfileVC
         vc.workerDetails = self.workerDetails
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
+       // self.navigationController?.pushViewController(vc, animated: true)
     }
     
     /*
