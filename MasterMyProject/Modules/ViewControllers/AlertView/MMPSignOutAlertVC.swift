@@ -10,6 +10,7 @@ import UIKit
 
 class MMPSignOutAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
 
+    var projectId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
@@ -24,6 +25,7 @@ class MMPSignOutAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
     @IBAction func okButtonAction(_ sender: UIButton) {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
             vc.delegate = self
+        vc.projectId = self.projectId
             self.navigationController?.pushViewController(vc, animated: true)
     }
     

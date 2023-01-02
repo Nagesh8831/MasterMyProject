@@ -1198,6 +1198,13 @@
                             <constraint firstItem="Uxp-lw-me1" firstAttribute="leading" secondItem="OA2-cA-Qre" secondAttribute="leading" constant="56" id="u5v-3M-1RX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="jobIdLabel" destination="R8N-rX-ppV" id="qDH-4W-ixb"/>
+                        <outlet property="projectClientNameLabel" destination="fdh-To-24M" id="fDl-gV-tar"/>
+                        <outlet property="projectClientRepNameLabel" destination="4kg-TL-Pt0" id="eSU-5X-DVZ"/>
+                        <outlet property="projectNameLabel" destination="R1y-uS-oDV" id="9HU-J1-epT"/>
+                        <outlet property="submittedByLabel" destination="SVx-jq-Yge" id="Q64-y3-cfY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MzJ-xv-ZRv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2208,6 +2215,10 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="320" height="850"/>
+                    <connections>
+                        <outlet property="jobOneImage" destination="bxm-jV-gcA" id="q9z-8R-Lgj"/>
+                        <outlet property="jobTwoImage" destination="P0b-Vs-aPw" id="L7c-lR-I1b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SM1-XM-0O6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

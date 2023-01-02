@@ -117,6 +117,7 @@ extension MMPDashbordVC {
                             guard let workerDetails = projectJSON["result_object"] as? [String:AnyObject] else {return}
                             self.workerDetails = workerDetails
                             guard let name = workerDetails["name"] else {return}
+                            UserDefaults.standard.set(name, forKey: "workerName")
                             self.workerNameLabel.text = "Hello, \(name)"
                         }
                     }

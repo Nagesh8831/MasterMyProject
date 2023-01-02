@@ -39,14 +39,16 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
                cell.actionButton.tintColor = MMPConstant.blueColor
                  cell.actionButton.alpha = 1.0
            } else if projectStatus == "signed_in" {
-                cell.actionButton.setTitle("Sign In", for: .normal)
-               // cell.actionButton.tintColor = MMPConstant.redColor
-               cell.actionButton.tintColor = MMPConstant.blueColor
+               // cell.actionButton.setTitle("Sign In", for: .normal)
+               cell.actionButton.setTitle("Sign Out", for: .normal)
+                cell.actionButton.tintColor = MMPConstant.redColor
+               //cell.actionButton.tintColor = MMPConstant.blueColor
                cell.actionButton.alpha = 1.0
             } else if projectStatus == "signed_out" {
-                cell.actionButton.setTitle("Sign In", for: .normal)
-               // cell.actionButton.tintColor = MMPConstant.redColor
-                cell.actionButton.tintColor = MMPConstant.blueColor
+               // cell.actionButton.setTitle("Sign In", for: .normal)
+                cell.actionButton.setTitle("Done", for: .normal)
+                cell.actionButton.tintColor = .darkGray
+               // cell.actionButton.tintColor = MMPConstant.blueColor
                // cell.actionButton.isUserInteractionEnabled = false
                 cell.actionButton.alpha = 0.3
             }
@@ -67,12 +69,13 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
     @objc func signOutButtonAction(_ sender : UIButton) {
         
         if let projectStatus = projectArray[sender.tag]["sign_in_flag"] as? String {
-            if projectStatus == "signed_in" {
+            if projectStatus == "new" {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPWorkerSignInVC") as! MMPWorkerSignInVC
                 vc.projectId = projectArray[sender.tag]["id"] as? String ?? ""
                 self.navigationController?.pushViewController(vc, animated: true)
           } else if projectStatus == "signed_in" {
               let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
+              vc.projectId = projectArray[sender.tag]["id"] as? String ?? ""
                 let navController = UINavigationController(rootViewController: vc) //Add navigation controller
                 navController.modalTransitionStyle = .crossDissolve
                 navController.modalPresentationStyle = .overCurrentContext

@@ -10,6 +10,7 @@ import KRProgressHUD
 class MMPBaseVC: UIViewController, UIPickerViewDelegate {
     let plantListPicker = UIPickerView()
     let toolbar = UIToolbar()
+    var selectedImage = UIImage()
     override func viewDidLoad() {
         super.viewDidLoad()
 
