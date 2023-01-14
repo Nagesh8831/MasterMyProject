@@ -11,6 +11,7 @@ extension MMPPrestartOneVC {
     func setUpUI() {
         setUpTableView()
     }
+    
     func setUpTableView() {
         prestartOneTableView.register(UINib(nibName: "MMPPrestartTableViewCell", bundle: nil), forCellReuseIdentifier: "MMPPrestartTableViewCell")
     }
@@ -28,6 +29,15 @@ extension MMPPrestartOneVC: UITableViewDelegate,UITableViewDataSource {
         cell.noButton.tag = indexPath.row
         cell.yesButton.addTarget(self, action: #selector(yesButtonTapped), for: .touchUpInside)
         cell.noButton.addTarget(self, action: #selector(noButtonTapped), for: .touchUpInside)
+        for data in fluidLevelsArray {
+            if (prestartListArray[indexPath.row]["id"] as? String == data["id"] as? String  && data["ans"] as? String == "Yes") {
+                cell.yesButton.backgroundColor = MMPConstant.greenColor
+                cell.yesButton.tintColor = .white
+            } else if (prestartListArray[indexPath.row]["id"] as? String == data["id"] as? String && data["ans"] as? String == "No") {
+                cell.noButton.backgroundColor = MMPConstant.redColor
+                cell.noButton.tintColor = .white
+            }
+        }
         return cell
         
     }
@@ -49,15 +59,14 @@ extension MMPPrestartOneVC: UITableViewDelegate,UITableViewDataSource {
             }
         }
        
-            fluidLevelsDict = prestartListArray[sender.tag]
-            fluidLevelsDict["ans"] = "Yes" as AnyObject
+        fluidLevelsDict = prestartListArray[sender.tag]
+        fluidLevelsDict["ans"] = "Yes" as AnyObject
         fluidLevelsArray.append(fluidLevelsDict)
-        
-        print("fluidLevelsArray from Yes",fluidLevelsArray)
+        prestartOneTableView.reloadData()
+        print("inspectionListSelectedArray from Yes",fluidLevelsArray)
     }
     
     @objc func noButtonTapped(_ sender : UIButton) {
-        
         if fluidLevelsArray.count != 0 {
             for data in fluidLevelsArray {
                 if prestartListArray[sender.tag]["id"] as? String == data["id"] as? String {
@@ -69,13 +78,11 @@ extension MMPPrestartOneVC: UITableViewDelegate,UITableViewDataSource {
                 }
             }
         }
-        
-            fluidLevelsDict = prestartListArray[sender.tag]
-            fluidLevelsDict["ans"] = "No" as AnyObject
-
+       
+        fluidLevelsDict = prestartListArray[sender.tag]
+        fluidLevelsDict["ans"] = "No" as AnyObject
         fluidLevelsArray.append(fluidLevelsDict)
-
-        print("fluidLevelsArray from no",fluidLevelsArray)
-        
+        prestartOneTableView.reloadData()
+        print("inspectionListSelectedArray from No",fluidLevelsArray)
     }
 }

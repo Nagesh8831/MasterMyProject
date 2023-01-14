@@ -41,7 +41,7 @@ class MMPPrestartOneVC: MMPBaseVC {
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
         if !MMPUtilities.valiadateBlankText(text: selectTextField.text) {
-            alertUser("Master My Project", message: "Please select truck type ")
+            alertUser("Master My Project", message: "Please select machine type ")
             return
         }
         

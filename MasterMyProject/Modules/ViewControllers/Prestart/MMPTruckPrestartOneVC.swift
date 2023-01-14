@@ -41,7 +41,7 @@ class MMPTruckPrestartOneVC: MMPBaseVC {
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
         if !MMPUtilities.valiadateBlankText(text: selectTextField.text) {
-            alertUser("Master My Project", message: "Please select machine type ")
+            alertUser("Master My Project", message: "Please select truck type ")
             return
         }
         if categoryAArray.count == categoryASelectedArray.count {

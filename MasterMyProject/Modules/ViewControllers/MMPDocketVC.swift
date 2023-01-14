@@ -36,6 +36,7 @@ class MMPDocketVC: MMPBaseVC {
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketTwoVC") as! MMPDocketTwoVC
+        vc.projectId = self.projectId
         self.navigationController?.pushViewController(vc, animated: true)
     }
     /*
