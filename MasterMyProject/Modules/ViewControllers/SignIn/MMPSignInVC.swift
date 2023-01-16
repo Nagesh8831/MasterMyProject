@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-class MMPSignInVC: MMPBaseVC {
+class MMPSignInVC: MMPBaseVC, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -57,6 +57,16 @@ class MMPSignInVC: MMPBaseVC {
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            passwordTextField.resignFirstResponder()
+        }
+        
+        return true
     }
     
     /*
