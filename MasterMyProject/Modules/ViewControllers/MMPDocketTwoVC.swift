@@ -15,39 +15,67 @@ class MMPDocketTwoVC: MMPBaseVC {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var jobOneImage: UIImageView!
     @IBOutlet weak var jobTwoImage: UIImageView!
+    @IBOutlet weak var signatureImage: UIImageView!
     @IBOutlet weak var workDoneListTableView: UITableView!
     @IBOutlet weak var plantListTableView: UITableView!
     @IBOutlet weak var yesFreeFromAffectButton: UIButton!
     @IBOutlet weak var noFreeFromAffectButton: UIButton!
+    @IBOutlet weak var addMoreButton: UIButton!
+    @IBOutlet weak var workDoneButton: UIButton!
     var attachmentData = Data()
     var isSetImageOne = false
+    var isSetImageTwo = false
     var imgOne = UIImage()
     var imgTwo = UIImage()
+    var imgThree = UIImage()
     var projectId = ""
     var freeFromDrug = ""
     var workDoneListArray = [[String:AnyObject]]()
     var plantListArray = [[String:AnyObject]]()
     var workDoneIdList = [String]()
+    var workDoneTitleList = [String]()
     var plantIdList = [String]()
+    var plantTitleList = [String]()
     // var dateTime = ""
     var timeArray = ["1Hrs","2Hrs","3Hrs","4Hrs","5Hrs","6Hrs","7Hrs","8Hrs","9Hrs","10Hrs","11Hrs","12Hrs","13Hrs","14Hrs","15Hrs","16Hrs","17Hrs","18Hrs","19Hrs","20Hrs","21Hrs","22Hrs","23Hrs","24Hrs"]
     override func viewDidLoad() {
         super.viewDidLoad()
+       // descriptionTextView.returnKeyType = .done
         navigationController?.isNavigationBarHidden = false
         title = "Doket"
+        addMoreButton.setTitle("", for: .normal)
+        workDoneButton.setTitle("", for: .normal)
         addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         let tapImageOne = UITapGestureRecognizer(target: self, action: #selector(imageOneTapped))
         let tapImageTwo = UITapGestureRecognizer(target: self, action: #selector(imageTwoTapped))
+        let tapSignatureImage = UITapGestureRecognizer(target: self, action: #selector(signatureImageTapped))
         jobOneImage.addGestureRecognizer(tapImageOne)
         jobTwoImage.addGestureRecognizer(tapImageTwo)
+        signatureImage.addGestureRecognizer(tapSignatureImage)
         jobTwoImage.isUserInteractionEnabled = true
         jobOneImage.isUserInteractionEnabled = true
+        signatureImage.isUserInteractionEnabled = true
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapped))
+        view.addGestureRecognizer(singleTap)
+        let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+                let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
+                let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissMyKeyboard))
+                toolbar.setItems([flexSpace, doneBtn], animated: false)
+                toolbar.sizeToFit()
+                self.descriptionTextView.inputAccessoryView = toolbar
         // Do any additional setup after loading the view.
     }
     
+    @objc func dismissMyKeyboard() {
+            view.endEditing(true)
+        }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        workDoneListTableView.isHidden = true
-        plantListTableView.isHidden = true
+        var touch: UITouch? = touches.first
+        if touch?.view != self.workDoneListTableView || (self.plantListTableView != nil)  {
+            workDoneListTableView.isHidden = true
+            plantListTableView.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,13 +84,29 @@ class MMPDocketTwoVC: MMPBaseVC {
     }
     
     @objc func imageOneTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        startLoading()
         showAlert()
         isSetImageOne = true
+        isSetImageTwo = false
     }
     
     @objc func imageTwoTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        startLoading()
         showAlert()
+        isSetImageTwo = true
         isSetImageOne = false
+    }
+    
+    @objc func signatureImageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        startLoading()
+        showAlert()
+        isSetImageTwo = false
+        isSetImageOne = false
+    }
+    
+    @objc func singleTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        workDoneListTableView.isHidden = true
+        plantListTableView.isHidden = true
     }
     
     @IBAction func backButtonAction(_ sender: UIBarButtonItem) {
@@ -102,6 +146,18 @@ class MMPDocketTwoVC: MMPBaseVC {
         default:
             break
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        let bottomEdge: CGFloat = scrollView.contentOffset.y + scrollView.frame.size.height
+        let contentSize = scrollView.contentSize.height * 0.25
+        if bottomEdge >= contentSize {
+
+            workDoneListTableView.isHidden = true
+            plantListTableView.isHidden = true
+        }
+
     }
     /*
     // MARK: - Navigation
@@ -204,8 +260,8 @@ extension MMPDocketTwoVC {
         AF.upload(
                     multipartFormData: { multipartFormData in
                         multipartFormData.append(self.imgOne.jpegData(compressionQuality: 0.5)!, withName: "job_per_photo1" , fileName: "file.jpeg", mimeType: "image/jpeg")
-                        multipartFormData.append(self.imgOne.jpegData(compressionQuality: 0.5)!, withName: "job_per_photo2" , fileName: "file.jpeg", mimeType: "image/jpeg")
-                        multipartFormData.append(self.imgOne.jpegData(compressionQuality: 0.5)!, withName: "signature" , fileName: "file.jpeg", mimeType: "image/jpeg")
+                        multipartFormData.append(self.imgTwo.jpegData(compressionQuality: 0.5)!, withName: "job_per_photo2" , fileName: "file.jpeg", mimeType: "image/jpeg")
+                        multipartFormData.append(self.imgThree.jpegData(compressionQuality: 0.5)!, withName: "signature" , fileName: "file.jpeg", mimeType: "image/jpeg")
                 },
                     to: urlResponce, method: .post , headers: headers)
                     .response { resp in
@@ -354,6 +410,7 @@ extension MMPDocketTwoVC {
 extension MMPDocketTwoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //Show alert to selected the media source type.
     func showAlert() {
+        stopLoading()
         let alert = UIAlertController(title: "Camera Access Required", message: "'Master My Project' would like to access the camera", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action: UIAlertAction) in
             self.getImage(fromSourceType: .camera)
@@ -381,13 +438,15 @@ extension MMPDocketTwoVC: UIImagePickerControllerDelegate, UINavigationControlle
         self.dismiss(animated: true) { [weak self] in
             guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
             //Setting image to your image view
-            if self?.isSetImageOne == true{
+            if self?.isSetImageOne == true {
                 self?.jobOneImage.image = image
                 self?.imgOne = image
-                self?.attachmentData = image.jpegData(compressionQuality: 0.2)!
-            } else {
+            } else if self?.isSetImageTwo == true {
                 self?.jobTwoImage.image = image
-               // self?.attachmentData = image.jpegData(compressionQuality: 0.2)!
+                self?.imgTwo = image
+            } else {
+                self?.signatureImage.image = image
+                self?.imgThree = image
             }
         }
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -479,6 +538,9 @@ extension MMPDocketTwoVC : UITableViewDataSource,UITableViewDelegate {
         return returnCell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40.0
+    }
     @objc func workDoneButtonCLick(sender:UIButton) {
         sender.isSelected = !sender.isSelected
         let point = sender.convert(CGPoint.zero, to: workDoneListTableView)
@@ -505,7 +567,27 @@ extension MMPDocketTwoVC : UITableViewDataSource,UITableViewDelegate {
                 print("total123",workDoneIdList.count)
             }
         }
-        workDoneLabel.text = workDoneIdList.joined(separator: ",")
+        
+        if workDoneTitleList.contains((workDoneListArray[sender.tag]["activity"] as? String)!) {
+            //selectedRows.remove(at: selectedRows.index(of: indxPath!)!)
+            if let fId = workDoneListArray[sender.tag]["activity"] as? String   {
+                for i in 0...workDoneTitleList.count - 1 {
+                    if fId == workDoneTitleList[i] {
+                        workDoneTitleList.remove(at: i)
+                        break
+                    }
+                }
+//                print("did deselect and the text is \(workDoneIdList)")
+//                print("total123",workDoneIdList.count)
+                // isSelected_All = false
+            }
+        } else {
+            // selectedRows.append(indxPath!)
+            if   let id = workDoneListArray[sender.tag]["activity"] as? String  {
+                workDoneTitleList.append(id)
+            }
+        }
+        workDoneLabel.text = workDoneTitleList.joined(separator: ",")
         workDoneListTableView.reloadRows(at: [indxPath!], with: .automatic)
     }
  
@@ -535,7 +617,25 @@ extension MMPDocketTwoVC : UITableViewDataSource,UITableViewDelegate {
                 print("total123",plantIdList.count)
             }
         }
-        plantLabel.text = plantIdList.joined(separator: ",")
+        
+        if plantTitleList.contains((plantListArray[sender.tag]["plant_name"] as? String)!) {
+            //selectedRows.remove(at: selectedRows.index(of: indxPath!)!)
+            if let fId = plantListArray[sender.tag]["plant_name"] as? String   {
+                for i in 0...plantTitleList.count - 1 {
+                    if fId == plantTitleList[i] {
+                        plantTitleList.remove(at: i)
+                        break
+                    }
+                }
+            }
+        } else {
+            // selectedRows.append(indxPath!)
+            if   let id = plantListArray[sender.tag]["plant_name"] as? String  {
+                plantTitleList.append(id)
+            }
+        }
+        
+        plantLabel.text = plantTitleList.joined(separator: ",")
         plantListTableView.reloadRows(at: [indxPath!], with: .automatic)
     }
     
