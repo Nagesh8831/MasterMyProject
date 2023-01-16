@@ -105,18 +105,18 @@ class MMPWorkerSignInVC: MMPBaseVC {
     
     @IBAction func projectSignInAction(_ sender: Any) {
         guard validateData() else { return }
-       // projectSignIn()
+        projectSignIn()
        // self.showAlerViewController("Are you operating Machine?", imageName: "machine", projectId: projectId ?? "")
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPAlertVC") as!MMPAlertVC
-        let navController = UINavigationController(rootViewController: vc) //Add navigation controller
-        navController.modalTransitionStyle = .crossDissolve
-        navController.modalPresentationStyle = .overCurrentContext
-        vc.delegate = self
-        vc.titleString = "Are you operating Machine?"
-        vc.imageString = "machine"
-        vc.projectId = projectId
-        vc.isFromPrestartTwo = false
-        self.present(navController, animated: true)
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPAlertVC") as!MMPAlertVC
+//        let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+//        navController.modalTransitionStyle = .crossDissolve
+//        navController.modalPresentationStyle = .overCurrentContext
+//        vc.delegate = self
+//        vc.titleString = "Are you operating Machine?"
+//        vc.imageString = "machine"
+//        vc.projectId = projectId
+//        vc.isFromPrestartTwo = false
+//        self.present(navController, animated: true)
         
     }
     /*
@@ -162,10 +162,7 @@ extension MMPWorkerSignInVC {
                                       "Content-Type": "application/json"]
         startLoading()
         print(parameters)
-        //let url = "http://52.63.247.85/mastermyproject/restapi"
         let urlRequest = String(format: "%@%@",MMPConstant.baseURL,MMPConstant.PROJECT_SIGN_IN)
-       // let urlRequest = "http://52.63.247.85/mastermyproject/restapi/projects/signin"
-      //  let urlRequest = String (format: "%@%@%@", MMPConstant.baseURL,MMPConstant.PROJECT_SIGN_IN)
         print(urlRequest)
         AF.request( urlRequest,method: .post ,parameters: parameters,encoding:
                         JSONEncoding.default, headers: headers)
@@ -177,15 +174,25 @@ extension MMPWorkerSignInVC {
                 if let loginJSON = value as? [String: Any] {
                     if let statusCode = loginJSON["status_code"] as? Int,let meesage = loginJSON["message"] as? String{
                         print(statusCode)
-                        if statusCode == 200 {
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
-                            if let resultObject = loginJSON["result_object"] as? [String: Any], let token = resultObject["token"] as? String, let id = resultObject["id"] as? String {
-                                UserDefaults.standard.set(token, forKey: "userToken")
-                                UserDefaults.standard.set(id, forKey: "userId")
-                                UserDefaults.standard.set(true, forKey: "isLogin")
-                                UserDefaults.standard.synchronize()
-                            }
-                            self.navigationController?.pushViewController(vc, animated: true)
+                        if statusCode == 200 || statusCode == 201 {
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPAlertVC") as!MMPAlertVC
+                            let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+                            navController.modalTransitionStyle = .crossDissolve
+                            navController.modalPresentationStyle = .overCurrentContext
+                            vc.delegate = self
+                            vc.titleString = "Are you operating Machine?"
+                            vc.imageString = "machine"
+                            vc.projectId = self.projectId
+                            vc.isFromPrestartTwo = false
+                            self.present(navController, animated: true)
+//                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
+//                            if let resultObject = loginJSON["result_object"] as? [String: Any], let token = resultObject["token"] as? String, let id = resultObject["id"] as? String {
+//                                UserDefaults.standard.set(token, forKey: "userToken")
+//                                UserDefaults.standard.set(id, forKey: "userId")
+//                                UserDefaults.standard.set(true, forKey: "isLogin")
+//                                UserDefaults.standard.synchronize()
+//                            }
+//                            self.navigationController?.pushViewController(vc, animated: true)
                         } else if statusCode == 403 {
                             self.alertUser("Error", message: meesage)
                         }
@@ -210,8 +217,8 @@ extension MMPWorkerSignInVC {
         self.dateTime = df.string(from: date)
         self.workerDateLabel.text = currentDate
         self.workerCurrentTimeLabel.text = currentTime
-        
     }
+    
     func validateData() -> Bool {
         if !MMPUtilities.valiadateBlankText(text: statusPPE) || !MMPUtilities.valiadateBlankText(text: onSiteStatus) || !MMPUtilities.valiadateBlankText(text: goAheadStatus) || !MMPUtilities.valiadateBlankText(text: affectedStatus) {
             alertUser("Master My Project", message: "Please select all field")

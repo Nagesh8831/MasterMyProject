@@ -6,10 +6,12 @@
 //
 
 import UIKit
-
+protocol SignOutActionControllerDelegate {
+    func signOutViewDismissed(_ projectId:String)
+}
 
 class MMPSignOutAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
-
+    var delegate: SignOutActionControllerDelegate?
     var projectId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +25,12 @@ class MMPSignOutAlertVC: MMPBaseVC, MMPAlertRemoveHelper {
     }
     
     @IBAction func okButtonAction(_ sender: UIButton) {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
-            vc.delegate = self
-        vc.projectId = self.projectId
-            self.navigationController?.pushViewController(vc, animated: true)
+            dismiss(animated: true) {
+                self.delegate?.signOutViewDismissed(self.projectId)
+            }
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
+//        vc.delegate = self
+//    vc.projectId = self.projectId
     }
     
     func removeTopChildViewController() {

@@ -130,4 +130,66 @@ extension MMPDashbordVC {
                 }
         }
     }
+    
+    func projectSignOut(_ projectId:String, signInId:String){
+        //guard validateData() else { return }
+        let parameters = ["signin_id": signInId,
+                          "pro_id": projectId,
+                          "datetime": getCurrentDateTime()
+        ]
+        let token = UserDefaults.standard.string(forKey: "userToken")
+        let headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",
+                                      "Content-Type": "application/json"]
+        startLoading()
+        print(parameters)
+        let urlRequest = String(format: "%@%@",MMPConstant.baseURL,MMPConstant.PROJECT_SIGN_OUT)
+        print(urlRequest)
+        AF.request( urlRequest,method: .post ,parameters: parameters,encoding:
+                        JSONEncoding.default, headers: headers)
+        .responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                self.stopLoading()
+                print("projectSignout_response",response)
+                if let loginJSON = value as? [String: Any] {
+                    if let statusCode = loginJSON["status_code"] as? Int,let meesage = loginJSON["message"] as? String{
+                        print(statusCode)
+                        self.projectListTableView.reloadData()
+                        if statusCode == 200 || statusCode == 201 {
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
+                            vc.delegate = self
+                            vc.projectId = projectId
+                            let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+                            navController.modalTransitionStyle = .crossDissolve
+                            navController.modalPresentationStyle = .overCurrentContext
+                            self.present(navController, animated: true, completion: nil)
+                        } else if statusCode == 403 {
+                            self.alertUser("Error", message: meesage)
+                        }
+                    }
+                }
+            case .failure(let error):
+                print("error",error)
+                self.stopLoading()
+                DispatchQueue.main.async {
+                    //self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+}
+
+extension MMPDashbordVC :SignOutActionControllerDelegate, MMPAlertRemoveHelper {
+    func signOutViewDismissed(_ projectId: String) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDocketVC") as! MMPDocketVC
+        vc.delegate = self
+      vc.projectId = projectId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func removeTopChildViewController() {
+        //DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 ) {
+            self.dismiss(animated: false)
+        //}
+    }
 }

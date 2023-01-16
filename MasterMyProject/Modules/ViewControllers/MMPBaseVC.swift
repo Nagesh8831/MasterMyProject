@@ -55,6 +55,13 @@ class MMPBaseVC: UIViewController, UIPickerViewDelegate {
         }
     }
     
+    func getCurrentDateTime()-> String {
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return df.string(from: date)
+        
+    }
     func startLoading(){
         KRProgressHUD.show()
         KRProgressHUD.set(activityIndicatorViewColors: [MMPConstant.blueColor])
