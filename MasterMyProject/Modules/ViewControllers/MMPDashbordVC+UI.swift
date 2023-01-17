@@ -57,6 +57,7 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.noInternetPopUp()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPProjectDetailsVC") as! MMPProjectDetailsVC
         vc.projectId = projectArray[indexPath.row]["id"] as? String
         self.navigationController?.pushViewController(vc, animated: true)
@@ -67,7 +68,7 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
     }
     
     @objc func signOutButtonAction(_ sender : UIButton) {
-        
+        self.noInternetPopUp()
         if let projectStatus = projectArray[sender.tag]["sign_in_flag"] as? String {
             if projectStatus == "new" {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPWorkerSignInVC") as! MMPWorkerSignInVC

@@ -13,6 +13,7 @@
 		042CD724294773E4002A6413 /* MMPMachinePrestartListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CD723294773E4002A6413 /* MMPMachinePrestartListModel.swift */; };
 		042CD726294773F6002A6413 /* MMPTruckPrestartListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042CD725294773F6002A6413 /* MMPTruckPrestartListModel.swift */; };
 		043B2E1C2923E164006D0C1B /* MMPUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B2E1B2923E164006D0C1B /* MMPUtilities.swift */; };
+		044897A52977111100FB1A92 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044897A42977111100FB1A92 /* Connectivity.swift */; };
 		04544D772932502300921A01 /* MMPWorkerSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04544D762932502300921A01 /* MMPWorkerSignInVC.swift */; };
 		049398D82934FDD50033FA46 /* MMPPrestartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049398D62934FDD50033FA46 /* MMPPrestartTableViewCell.swift */; };
 		049398D92934FDD50033FA46 /* MMPPrestartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049398D72934FDD50033FA46 /* MMPPrestartTableViewCell.xib */; };
@@ -83,6 +84,7 @@
 		042CD723294773E4002A6413 /* MMPMachinePrestartListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPMachinePrestartListModel.swift; sourceTree = "<group>"; };
 		042CD725294773F6002A6413 /* MMPTruckPrestartListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPTruckPrestartListModel.swift; sourceTree = "<group>"; };
 		043B2E1B2923E164006D0C1B /* MMPUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPUtilities.swift; sourceTree = "<group>"; };
+		044897A42977111100FB1A92 /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		04544D762932502300921A01 /* MMPWorkerSignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPWorkerSignInVC.swift; sourceTree = "<group>"; };
 		049398D62934FDD50033FA46 /* MMPPrestartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPPrestartTableViewCell.swift; sourceTree = "<group>"; };
 		049398D72934FDD50033FA46 /* MMPPrestartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MMPPrestartTableViewCell.xib; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				043B2E1B2923E164006D0C1B /* MMPUtilities.swift */,
+				044897A42977111100FB1A92 /* Connectivity.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				18DC12F328F6F9310067A29F /* MMPProjectDetailsVC.swift in Sources */,
 				18D6A23C28F5AA0F00A51A17 /* ProjectTableViewCell.swift in Sources */,
 				18BFAC1028FDDD0900A98475 /* MMPPrestartTwoVC.swift in Sources */,
+				044897A52977111100FB1A92 /* Connectivity.swift in Sources */,
 				18363ABA28FEFB7400BEF58B /* MMPTruckPrestartTwoVC.swift in Sources */,
 				18BFAC0E28FDD8BE00A98475 /* MMPPrestartOneVC.swift in Sources */,
 				180BAC2628EB2D340076F4B4 /* AppDelegate.swift in Sources */,

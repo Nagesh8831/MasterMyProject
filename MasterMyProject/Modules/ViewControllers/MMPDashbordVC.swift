@@ -29,6 +29,11 @@ class MMPDashbordVC: MMPBaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         setupUI()
+        if !NetStatus.shared.isConnected {
+            self.projectListTableView.isHidden = true
+            self.noDataLabel.isHidden = false
+            self.noDataLabel.text = "Internet service not available"
+        }
         getAllProjects()
         getWorkerByUserId()
     }
@@ -56,6 +61,7 @@ class MMPDashbordVC: MMPBaseVC {
 extension MMPDashbordVC {
     
     func getAllProjects() {
+        // noInternetPopUp()
         startLoading()
         let token = UserDefaults.standard.string(forKey: "userToken")
         let headers : HTTPHeaders = ["Authorization": "Bearer \(token ?? "")",

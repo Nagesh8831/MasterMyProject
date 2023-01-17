@@ -47,6 +47,13 @@ class MMPBaseVC: UIViewController, UIPickerViewDelegate {
         return topMostViewController
     }
     
+    func noInternetPopUp() {
+        if !NetStatus.shared.isConnected || !NetStatus.shared.isConnectedToWIFI {
+            alertUser("Error", message: "Internet service not available. Please check your internet service and try again at a later time.")
+            return
+        }
+    }
+    
     func alertUser(_ title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
