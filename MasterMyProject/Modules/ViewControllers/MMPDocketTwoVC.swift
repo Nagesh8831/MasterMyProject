@@ -25,6 +25,7 @@ class MMPDocketTwoVC: MMPBaseVC {
     var attachmentData = Data()
     var isSetImageOne = false
     var isSetImageTwo = false
+    var isTermSelected = false
     var imgOne = UIImage()
     var imgTwo = UIImage()
     var imgThree = UIImage()
@@ -48,13 +49,13 @@ class MMPDocketTwoVC: MMPBaseVC {
         addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         let tapImageOne = UITapGestureRecognizer(target: self, action: #selector(imageOneTapped))
         let tapImageTwo = UITapGestureRecognizer(target: self, action: #selector(imageTwoTapped))
-        let tapSignatureImage = UITapGestureRecognizer(target: self, action: #selector(signatureImageTapped))
+       // let tapSignatureImage = UITapGestureRecognizer(target: self, action: #selector(signatureImageTapped))
         jobOneImage.addGestureRecognizer(tapImageOne)
         jobTwoImage.addGestureRecognizer(tapImageTwo)
-        signatureImage.addGestureRecognizer(tapSignatureImage)
+        //signatureImage.addGestureRecognizer(tapSignatureImage)
         jobTwoImage.isUserInteractionEnabled = true
         jobOneImage.isUserInteractionEnabled = true
-        signatureImage.isUserInteractionEnabled = true
+       // signatureImage.isUserInteractionEnabled = true
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapped))
         view.addGestureRecognizer(singleTap)
         let toolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
@@ -116,7 +117,46 @@ class MMPDocketTwoVC: MMPBaseVC {
     @IBAction func sendButtonAction(_ sender: UIButton) {
 //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
 //        self.navigationController?.pushViewController(vc, animated: true)
+        
+//        if jobOneImage.image == nil || jobTwoImage.image == nil {
+//            alertUser("Error", message: "Please select all field")
+//            return false
+//        } else {}
         addDocket()
+    }
+    
+    func validateData() -> Bool {
+        if workDoneIdList.count == 0 {
+            alertUser("Error", message: "Please select all field")
+            return false
+        }
+        
+        if isTermSelected == false {
+            alertUser("Error", message: "Please select all field")
+        }
+        
+        if !MMPUtilities.valiadateBlankText(text: descriptionTextView.text) {
+            alertUser("Error", message: "Please select all field")
+            return false
+        }
+        
+        if plantIdList.count == 0 {
+            alertUser("Error", message: "Please select all field")
+            return false
+        }
+        
+        if !MMPUtilities.valiadateBlankText(text: totalTimeTextField.text) {
+            alertUser("Error", message: "Please select all field")
+            return false
+        }
+        
+        if freeFromDrug.isEmpty {
+            alertUser("Error", message: "Please select all field")
+            return false
+        }
+
+
+        return true
     }
     
     @IBAction func selectButtonAction(_ sender: UIButton) {
@@ -146,6 +186,17 @@ class MMPDocketTwoVC: MMPBaseVC {
         default:
             break
         }
+    }
+    
+    @IBAction func acceptTerms(_ sender: Any) {
+        (sender as! UIButton).isSelected = !(sender as! UIButton).isSelected
+
+        if (sender as! UIButton).isSelected  {
+            isTermSelected = true
+        } else {
+            isTermSelected = false
+        }
+        print(isTermSelected)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -238,6 +289,11 @@ extension MMPDocketTwoVC {
     }
     
     func addDocket() {
+        guard validateData() else { return }
+        if jobOneImage.image == nil || jobTwoImage.image == nil {
+            alertUser("Error", message: "Please select images")
+            return
+        }
         let token = UserDefaults.standard.string(forKey: "userToken")
             let boundary = generateBoundaryString()
             let headers: HTTPHeaders = ["content-type": "multipart/form-data; boundary=\(boundary)",
@@ -248,20 +304,21 @@ extension MMPDocketTwoVC {
          let param = [
               "pro_id" : projectId as AnyObject,
               "pro_activity_id": workDoneIdList as AnyObject,
-              "description": "sdsfdsdfs" as AnyObject,//descriptionTextView.text as AnyObject,
+              "description": descriptionTextView.text as AnyObject,
               "total_time" : totalTimeTextField.text as AnyObject,
               "free_frm_acl_drg_ftgr": freeFromDrug as AnyObject,
               "datetime" : getCurrentDateTime() as AnyObject,
-              "plant_id" : plantIdList as AnyObject
+              "plant_id" : plantIdList as AnyObject,
+              "signature": isTermSelected as AnyObject
               ] as [String : AnyObject]
             print(param)
             startLoading()
         
         AF.upload(
                     multipartFormData: { multipartFormData in
-                        multipartFormData.append(self.imgOne.jpegData(compressionQuality: 0.5)!, withName: "job_per_photo1" , fileName: "file.jpeg", mimeType: "image/jpeg")
-                        multipartFormData.append(self.imgTwo.jpegData(compressionQuality: 0.5)!, withName: "job_per_photo2" , fileName: "file.jpeg", mimeType: "image/jpeg")
-                        multipartFormData.append(self.imgThree.jpegData(compressionQuality: 0.5)!, withName: "signature" , fileName: "file.jpeg", mimeType: "image/jpeg")
+                        multipartFormData.append(self.imgOne.jpegData(compressionQuality: 0.5) ?? self.attachmentData, withName: "job_per_photo1" , fileName: "file.jpeg", mimeType: "image/jpeg")
+                        multipartFormData.append(self.imgTwo.jpegData(compressionQuality: 0.5) ?? self.attachmentData, withName: "job_per_photo2" , fileName: "file.jpeg", mimeType: "image/jpeg")
+                       // multipartFormData.append(self.imgThree.jpegData(compressionQuality: 0.5)!, withName: "signature" , fileName: "file.jpeg", mimeType: "image/jpeg")
                 },
                     to: urlResponce, method: .post , headers: headers)
                     .response { resp in
@@ -271,13 +328,22 @@ extension MMPDocketTwoVC {
                                          switch(status){
                                          case 200:
                                             print(resp.result)
-                                                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
-                                                     self.navigationController?.pushViewController(vc, animated: true)
+                                                     
                                             do{
                                                 if let json = resp.data {
                                                     if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject]{
 
-                                                        print(jsonData)
+                                                        print("jsonData",jsonData)
+                                                        if let statusCode = jsonData["status_code"] as? Int {
+                                                            if statusCode == 200 {
+                                                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPDashbordVC") as! MMPDashbordVC
+                                                                self.navigationController?.pushViewController(vc, animated: true)
+                                                                
+                                                            } else {
+                                                                self.alertUser("Error", message: "Someting went wrong")
+                                                            }
+                                                            
+                                                        }
                                                         if let issueAgenda = jsonData["pro_id"] as? String  {
                                                            print("issueAgenda",issueAgenda)
                                                         }
@@ -286,20 +352,21 @@ extension MMPDocketTwoVC {
                                             }catch {
                                                 //print(error.localizedDescription)
                                             }
-
+                                         case 400:
+                                             self.alertUser("Error", message: "Someting went wrong")
                                          default:
-                                             //print("error with response status: \(status)")
-                                             do{
-                                                 if let json = resp.data {
-                                                     if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject]{
-                                                         //print(jsonData)
-                                            // self.alert(jsonData["message"] as! String, message: "")
-                                                        self.alertUser(jsonData["message"] as! String, message: "")
-                                                     }
-                                                 }
-                                             }catch {
-                                                 print(error.localizedDescription)
-                                             }
+                                             print("error with response status: \(status)")
+//                                             do{
+//                                                 if let json = resp.data {
+//                                                     if let jsonData = try JSONSerialization.jsonObject(with: json, options: .allowFragments) as? [String:AnyObject]{
+//                                                         //print(jsonData)
+//                                            // self.alert(jsonData["message"] as! String, message: "")
+//                                                        self.alertUser(jsonData["message"] as! String, message: "")
+//                                                     }
+//                                                 }
+//                                             }catch {
+//                                                 print(error.localizedDescription)
+//                                             }
                                          }
                                      }
                     
@@ -445,7 +512,7 @@ extension MMPDocketTwoVC: UIImagePickerControllerDelegate, UINavigationControlle
                 self?.jobTwoImage.image = image
                 self?.imgTwo = image
             } else {
-                self?.signatureImage.image = image
+                //self?.signatureImage.image = image
                 self?.imgThree = image
             }
         }

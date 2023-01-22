@@ -21,17 +21,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This application requires location services to work</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This application requires location services to work</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This application requires location services to work</string>
-    <key>NSCameraUsageDescription</key>
-    <string>'Master My Project' would like to access the camera</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>You can select photos to attach to reports.</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 </dict>
 </plist>

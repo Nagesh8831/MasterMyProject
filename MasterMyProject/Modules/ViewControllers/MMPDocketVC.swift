@@ -22,7 +22,7 @@ class MMPDocketVC: MMPBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
-        title = "Doket"
+        title = "MMPTruckAlertVC"
         addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         // Do any additional setup after loading the view.
     }

@@ -22,16 +22,16 @@
                         <rect key="frame" x="16" y="10" width="356" height="60"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TNE-V7-sci">
-                                <rect key="frame" x="248" y="14" width="100" height="30"/>
+                                <rect key="frame" x="238" y="14" width="115" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="c3R-UY-KDh"/>
+                                    <constraint firstAttribute="width" constant="115" id="c3R-UY-KDh"/>
                                 </constraints>
                                 <color key="tintColor" red="0.090196078431372548" green="0.20000000000000001" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Signed_Out"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project Bricks Blenders 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6H-9x-uey">
-                                <rect key="frame" x="8" y="10" width="235" height="40"/>
+                                <rect key="frame" x="8" y="10" width="225" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                             <constraint firstAttribute="bottom" secondItem="TNE-V7-sci" secondAttribute="bottom" constant="16" id="B0T-Kj-DvT"/>
                             <constraint firstItem="a6H-9x-uey" firstAttribute="top" secondItem="lWe-dR-Xpz" secondAttribute="top" constant="10" id="DBr-fx-m3V"/>
                             <constraint firstItem="TNE-V7-sci" firstAttribute="leading" secondItem="a6H-9x-uey" secondAttribute="trailing" constant="5" id="PZT-me-eIl"/>
-                            <constraint firstAttribute="trailing" secondItem="TNE-V7-sci" secondAttribute="trailing" constant="8" id="ctC-uo-4VH"/>
+                            <constraint firstAttribute="trailing" secondItem="TNE-V7-sci" secondAttribute="trailing" constant="3" id="ctC-uo-4VH"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">

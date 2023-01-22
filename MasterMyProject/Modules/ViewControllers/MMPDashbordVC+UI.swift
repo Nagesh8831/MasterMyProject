@@ -46,7 +46,7 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
                 cell.actionButton.alpha = 1.0
             } else if projectStatus == "signed_out" {
                 // cell.actionButton.setTitle("Sign In", for: .normal)
-                cell.actionButton.setTitle("Done", for: .normal)
+                cell.actionButton.setTitle("Signed_Out", for: .normal)
                 cell.actionButton.tintColor = .darkGray
                 // cell.actionButton.tintColor = MMPConstant.blueColor
                 // cell.actionButton.isUserInteractionEnabled = false
@@ -77,14 +77,14 @@ extension MMPDashbordVC : UITableViewDelegate,UITableViewDataSource {
             } else if projectStatus == "signed_in" {
             let proId = projectArray[sender.tag]["id"] as? String ?? ""
                 let signId = projectArray[sender.tag]["signin_id"] as? String ?? ""
-                self.projectSignOut(proId, signInId: signId)
-//                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
-//                vc.delegate = self
-//                vc.projectId = projectArray[sender.tag]["id"] as? String ?? ""
-//                let navController = UINavigationController(rootViewController: vc) //Add navigation controller
-//                navController.modalTransitionStyle = .crossDissolve
-//                navController.modalPresentationStyle = .overCurrentContext
-//                self.present(navController, animated: true, completion: nil)
+              //  self.projectSignOut(proId, signInId: signId)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPSignOutAlertVC") as!MMPSignOutAlertVC
+                vc.delegate = self
+                vc.projectId = projectArray[sender.tag]["id"] as? String ?? ""
+                let navController = UINavigationController(rootViewController: vc) //Add navigation controller
+                navController.modalTransitionStyle = .crossDissolve
+                navController.modalPresentationStyle = .overCurrentContext
+                self.present(navController, animated: true, completion: nil)
             } else if projectStatus == "signed_out" {
                 return
             }

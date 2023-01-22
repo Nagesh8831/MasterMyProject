@@ -89,7 +89,7 @@ extension MMPPrestartTwoVC {
                             navController.modalTransitionStyle = .crossDissolve
                             navController.modalPresentationStyle = .overCurrentContext
                             vc.delegate = self
-                            vc.titleString = "Are you operating Machine?"
+                            vc.titleString = "Are you operating any other machine?"
                             vc.imageString = "machine"
                             vc.projectId = self.projectId
                             vc.isFromPrestartTwo = true
