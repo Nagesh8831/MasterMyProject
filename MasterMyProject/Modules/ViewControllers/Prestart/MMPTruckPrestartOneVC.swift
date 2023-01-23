@@ -20,6 +20,7 @@ class MMPTruckPrestartOneVC: MMPBaseVC {
     var categoryASelectedArray = [[String:AnyObject]]()
     var categoryADict = [String:AnyObject]()
     var isFromPrestart = false
+    var isFromPrestartThree = false
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Prestart(1/3)"
@@ -61,6 +62,7 @@ class MMPTruckPrestartOneVC: MMPBaseVC {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MMPTruckAlertVC") as!MMPTruckAlertVC
         let navController = UINavigationController(rootViewController: vc) //Add navigation controller
         vc.isFromPrestart = isFromPrestart
+        vc.isFromPrestartThree = isFromPrestartThree
         navController.modalTransitionStyle = .crossDissolve
         navController.modalPresentationStyle = .overCurrentContext
         self.present(navController, animated: true)

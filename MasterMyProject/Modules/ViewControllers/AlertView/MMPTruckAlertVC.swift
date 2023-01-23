@@ -14,11 +14,17 @@ class MMPTruckAlertVC: MMPBaseVC {
     @IBOutlet weak var alertImage: UIImageView!
     var projectId: String?
     var isFromPrestart = false
+    var isFromPrestartThree = false
   //  var delegate: SelectTruckActionControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         addCustomizedBackBtn(navigationController: self.navigationController, navigationItem: self.navigationItem)
         navigationController?.isNavigationBarHidden = true
+        if isFromPrestartThree {
+            alertTitleLabel.text = "Are you driving any other truck?"
+        } else {
+            alertTitleLabel.text = "Are you driving any truck?"
+        }
         // Do any additional setup after loading the view.
     }
     
